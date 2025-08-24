@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
-import { BellIcon, Share2Icon } from "lucide-react";
+import { BellIcon, Share2Icon, GitBranchIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 
@@ -9,6 +9,8 @@ import TheLabBackground from "./homegrid-backgrounds/thelabBackground";
 import SkillsIUseToBuildBackground from "./homegrid-backgrounds/skillsiusetobuildBackground";
 import WhereIveBeenBackground from "./homegrid-backgrounds/whereivebeenBackground";
 import LetsConnectBackground from "./homegrid-backgrounds/letsconnectBackground";
+
+import letsconnectIcon from "../../public/letsconnectIcon.png"
 
 const features = [
   {
@@ -39,7 +41,7 @@ const features = [
     background: <WhereIveBeenBackground />,
   },
   {
-    Icon: React.Fragment,
+    Icon: GitBranchIcon,
     name: "",
     description: "",
     className: "col-span-3 lg:col-span-1",

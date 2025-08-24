@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react";
+import { CalendarIcon, HomeIcon, MailIcon, PencilIcon, Target } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -105,26 +105,28 @@ const Icons = {
 
 const DATA = {
   navbar: [
-    { href: "#", icon: Icons.home, label: "Home" },
-    { href: "#", icon: Icons.about, label: "About" },
-    { href: "#", icon: Icons.experience, label: "Experience" },
-    { href: "#", icon: Icons.projects, label: "Projects" },
+    { href: "/", icon: Icons.home, label: "Home" },
+    { href: "/about", icon: Icons.about, label: "About" },
+    { href: "/experience", icon: Icons.experience, label: "Experience" },
+    { href: "/projects", icon: Icons.projects, label: "Projects" },
   ],
   contact: {
     social: {
       GitHub: {
         name: "GitHub",
-        url: "#",
+        url: "https://github.com/vineet-panchal",
+        target: "_blank",
         icon: Icons.github,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "#",
+        url: "https://www.linkedin.com/in/vineetpanchal1/",
+        target: "_blank",
         icon: Icons.linkedin,
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:vineetpanchal03@gmail.com?subject=Hello%20Vineet&body=Hi%20Vineet%2C%0A%0A",
         icon: Icons.email,
       },
     },
@@ -166,6 +168,8 @@ export default function Navbar() {
                   <Link
                     href={social.url}
                     aria-label={social.name}
+                    target={"target" in social ? social.target : undefined}
+                    rel={"target" in social && social.target === "_blank" ? "noopener noreferrer" : undefined}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-9 rounded-full",
