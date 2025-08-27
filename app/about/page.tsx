@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '@/components/navbar';
 import AboutMe from '@/components/about-page/aboutme';
 import Skills from '@/components/about-page/skills';
+import Certifications from '@/components/about-page/certifications';
 
 export default function Page() {
   return (
@@ -10,6 +11,7 @@ export default function Page() {
         <Navbar />
         <AboutMe />
         <Skills />
+        <Certifications />
       </div>
     </>
   )
