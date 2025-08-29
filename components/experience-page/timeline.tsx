@@ -13,52 +13,45 @@ type TimelineItem = {
 
 const timelineData: TimelineItem[] = [
   {
-    title: "Software Engineer Fellow - Headstarter AI",
+    title: "Software Developer Intern - Dayforce",
     description:
-      "Built and shipped 3 AI-powered applications including a fashion recommendation tool, professor rating app, and an AI flashcard generator. Collaborated with Teach For Cambodia to design a teaching platform.",
-    date: "Summer 2024",
-    tags: ["AI", "Next.js", "TypeScript", "Supabase"],
+      "Joined the cloud developement team.",
+    date: "Sept 2025 - Present",
+    tags: ["Java"],
   },
   {
-    title: "Backend Developer - The Circle Lab",
+    title: "Full Stack Developer Intern - Codveda Technologies",
     description:
-      "Implemented backend functionality for a sustainability-focused platform. Focused on APIs and data integration.",
-    date: "2023",
-    tags: ["Backend", "APIs", "Databases"],
+      "Built a full-stack MERN application with user authentication (JWT), secure role-based routing, and seamless database integration using MongoDB and Mongoose; deployed and optimized both frontend and backend. Implemented real-time communication using WebSockets and Socket.io, enabling live chat functionality and dynamic, event-driven updates across the user interface. Developed a GraphQL API with Express-GraphQL, creating custom queries and mutations with authentication, and optimized data fetching for scalable client-server interactions.",
+    date: "May 2025 - Aug 2025",
+    tags: ["React", "Express", "MongoDB", "GraphQL", "WebSockets", "Node.js", "JWT", "Socket.io"],
   },
   {
-    title: "Summer of Bitcoin Program",
+    title: "Software Engineer - Summer Of Bitcoin",
     description:
       "Solved blockchain coding challenges in multiple programming languages. Learned about transaction verification and cryptographic hashing.",
-    date: "2023",
-    tags: ["Blockchain", "C++", "Python"],
+    date: "Mar 2025 - Apr 2025",
+    tags: ["Blockchain", "Python", "Java"],
   },
   {
-    title: "Open Source Contributor",
+    title: "Software Engineer Fellow - Headstarter AI",
     description:
-      "Contributed bug fixes and documentation improvements to open-source libraries on GitHub. Gained experience collaborating in large codebases.",
-    date: "2022",
-    tags: ["Open Source", "GitHub", "Collaboration"],
+      "Developed AI-powered web applications using Next, React, and OpenAI, improving user engagement by leveraging dynamic UI components and intelligent state management, resulting in a more interactive user experience. Improved system performance by optimizing API calls, reducing latency, and implementing server-side rendering, while ensuring seamless database management for structured data storage. Engineered API systems to streamline OpenAI model interactions while implementing scalable back-end architectures with Firebase and Supabase to optimize real-time data handling and authentication.",
+    date: "July 2024 - Sept 2024",
+    tags: ["Next.js", "React", "OpenAI", "Firebase", "Supabase", "TypeScript"],
   },
   {
-    title: "Teaching Assistant - Intro to Software",
+    title: "Frontend Developer Intern - The Circle Labs",
     description:
-      "Guided students through Java projects, graded assignments, and hosted coding workshops.",
-    date: "2022",
-    tags: ["Java", "Mentorship", "Teaching"],
-  },
-  {
-    title: "Personal Project - Insurance Inventory App",
-    description:
-      "Developed a prototype app to organize home insurance documents, with photo uploads, accessibility options, and community features.",
-    date: "2025",
-    tags: ["React", "Firebase", "UI/UX"],
-  },
+      "Designed and developed an engaging and informative website highlighting the organization’s mission and impact. Delivered a seamless and high-quality UI/UX experience, receiving positive feedback for its functionality. Developed the back-end functionality of the website using Node.js and Express.js and implemented MongoDB databases to ensure secure user authentication and data integrity.",
+    date: "May 2024 - July 2024",
+    tags: ["React", "Node.js", "TypeScript", "MongoDB", "Express"],
+  }
 ]
 
 export default function Timeline() {
   return (
-    <div className="relative w-full bg-neutral-950 py-16 text-neutral-50">
+    <div className="relative w-full bg-[var(--color-midnight)] py-16 text-neutral-50">
       <div className="mx-auto flex max-w-5xl flex-col space-y-16 px-6">
         {timelineData.map((item, idx) => (
           <motion.div
@@ -79,9 +72,12 @@ export default function Timeline() {
 
             {/* Right side - Content */}
             <div className="relative col-span-9">
-              {/* Timeline connector line */}
+                {/* Timeline connector line */}
+                {idx !== timelineData.length - 1 && (
+                <div className="absolute left-[-22px] top-0 h-full w-[2px] bg-neutral-800" />
+                )}
               {idx !== timelineData.length - 1 && (
-                <div className="absolute left-[-22px] h-[100vh] w-[2px] bg-neutral-800" />
+                <div className="absolute left-[-22px] h-[25vh] w-[2px] bg-neutral-800" />
               )}
 
               <div className="relative rounded-xl border border-neutral-800 bg-neutral-900 p-6 shadow-md">
@@ -90,7 +86,16 @@ export default function Timeline() {
                   {item.description}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {item.tags?.map((tag, i) => (
+                    {/* Timeline connector line */}
+                    {idx !== timelineData.length - 1 && (
+                    <div
+                      className="absolute left-[-1.5rem] top-3 h-[calc(100%+4rem)] w-[2px] bg-neutral-700"
+                      style={{
+                      height: 'calc(100% + 4rem)', // Extends to the next item's position
+                      }}
+                    />
+                    )}
+                                      {item.tags?.map((tag, i) => (
                     <Badge
                       key={i}
                       variant="secondary"

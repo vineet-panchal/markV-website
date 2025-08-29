@@ -1,12 +1,13 @@
 "use client";
 
+import Header from "../header";
 import Timeline from "./timeline";
 
 export default function WorkTimeline() {
   return (
-    <section className="py-10">
-      <h2 className="mb-6 text-center text-3xl font-bold">My Work Experience</h2>
+    <div className="py-10 bg-[var(--color-midnight)]">
+      <Header heading="My Work Timeline" subHeading="Chapters of my" coloredText="career." />
       <Timeline />
-    </section>
+    </div>
   )
 }

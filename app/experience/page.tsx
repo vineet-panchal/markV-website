@@ -6,9 +6,11 @@ import WorkTimeline from '@/components/experience-page/workTimeline';
 export default function Page() {
   return (
     <>
-      <Navbar />
-      <MainHeader />
-      <WorkTimeline />
+      <div className="bg-[var(--color-midnight)]">
+        <Navbar />
+        <MainHeader />
+        <WorkTimeline />
+      </div>
     </>
   )
 };
