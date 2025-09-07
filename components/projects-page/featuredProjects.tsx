@@ -108,7 +108,7 @@ export default function FeaturedProjects() {
                               {/* Title with dash */}
                               <div className="flex items-center gap-3">
                                 <span className={`h-1 w-6 rounded-full ${item.color}`} />
-                                <h2 className="text-xl font-bold">Next Ventures</h2>
+                                <h2 className="text-xl font-bold">{item.title}</h2>
                               </div>
 
                               <p className="text-sm text-neutral-400">
@@ -118,7 +118,7 @@ export default function FeaturedProjects() {
                               <ul className="space-y-3">
                                 {item.points?.map((point, i) => (
                                     <li key={i} className="flex items-start gap-3">
-                                      <span className={`h-2 w-2 m-2  ${item.color}`} />
+                                      <span className={`text-${item.color.split('-')[1]}-500`}>-</span>
                                       <span>{point}</span>
                                     </li>
                                 ))}
