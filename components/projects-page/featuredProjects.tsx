@@ -2,10 +2,16 @@
 
 import React from 'react';
 import Header from '../header';
-import FeaturedProjectCard from './featuredProjectCard';
 
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
+import FeaturedProjectDisplay from './featuredProjectDisplay';
+import FashionDisasterAvoiderImg from '../../assets/featured-projects/fashion.png';
+import RateMyProfessorImg from '../../assets/featured-projects/rate-my-professor.png';
+import SmartdeckImg from '../../assets/featured-projects/smartdeck.png';
+import TeachForCambodiaImg from '../../assets/featured-projects/tfc.png';
+
+import type { StaticImageData } from "next/image";
 
 type Project = {
   title: string
@@ -13,6 +19,8 @@ type Project = {
   points?: string[]
   tags?: string[]
   color: string
+  image?: string | StaticImageData
+  header?: string
 };
 
 const projectsData: Project[] = [
@@ -27,6 +35,8 @@ const projectsData: Project[] = [
     ],
     tags: ["Next.js", "React", "Supabase", "TypeScript", "Material UI", "Vercel"],
     color: "bg-pink-500",
+    image: TeachForCambodiaImg,
+    header: "Empowering classrooms through code."
   },
   {
     title: "SmartDeck",
@@ -39,6 +49,8 @@ const projectsData: Project[] = [
     ],
     tags: ["React", "Next.js", "Firebase", "OpenAI", "Material UI", "Clerk"],
     color: "bg-blue-500",
+    image: SmartdeckImg,
+    header: "Flashcards that actually think smarter."
   },
   {
     title: "Fashion Disaster Avoider",
@@ -51,6 +63,8 @@ const projectsData: Project[] = [
     ],
     tags: ["Next.js", "React", "Material UI", "OpenAI", "TypeScript"],
     color: "bg-green-500",
+    image: FashionDisasterAvoiderImg,
+    header: "Your virtual stylist in disguise."
   },
   {
     title: "Rate My Professor",
@@ -62,6 +76,8 @@ const projectsData: Project[] = [
     ],
     tags: ["Next.js", "React", "Pincone", "Material UI"],
     color: "bg-yellow-500",
+    image: RateMyProfessorImg,
+    header: "Student voices, amplified with AI."
   },
   {
     title: "A-Star Pathfinding Visualizer",
@@ -70,6 +86,8 @@ const projectsData: Project[] = [
     points: ["asdf", "asdf", "asdf"],
     tags: ["Python", "Pygame"],
     color: "bg-purple-500",
+    image: undefined,
+    header: "Watch algorithms find their way."
   }
 ];
 
@@ -78,74 +96,65 @@ export default function FeaturedProjects() {
     <>
       <div className="bg-[var(--color-midnight)] text-white py-5">
         <Header heading="My Featured Projects" subHeading="Highlights from the" coloredText="lab." />
+          <div className="relative w-full bg-[var(--color-midnight)] py-16 text-neutral-50">
+            <div className="mx-auto flex max-w-5xl flex-col space-y-16 px-6">
+              {projectsData.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.15 }}
+                  className="grid grid-cols-12 gap-6"
+                >
+                  {/* Left side - Project Showcase */}
+                  <div className="relative col-span-7 ">
+                    <FeaturedProjectDisplay bgColor={item.color} displayImg={item.image} />
+                  </div>
 
-              <div className="relative w-full bg-[var(--color-midnight)] py-16 text-neutral-50">
-                <div className="mx-auto flex max-w-5xl flex-col space-y-16 px-6">
-                  {projectsData.map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: idx * 0.15 }}
-                      className="grid grid-cols-12 gap-6"
-                    >
-                      {/* Left side - Project Showcase */}
-                      <div className="relative col-span-7 ">
+                  {/* Right side - Sticky Information */}
+                  <div className="relative col-span-5">
+                    <div className="sticky top-24">
+                        <span className="text-sm font-medium text-neutral-400">
 
-                        <div className="relative rounded-xl h-[100vh] border border-neutral-800 bg-neutral-900 p-6 shadow-md">
-                          asdf        
-                        </div>
-                      </div>
+                        <div className="relative col-span-3 space-y-6">
+                          {/* Title with dash */}
+                          <div className="flex items-center gap-3">
+                            <span className={`h-1 w-6 rounded-full ${item.color}`} />
+                            <h2 className="text-xl font-bold">{item.title}</h2>
+                          </div>
 
+                          <p className="text-sm text-neutral-400">
+                            {item.description}
+                          </p>
 
+                          <ul className="space-y-3">
+                              {item.points?.map((point, i) => (
+                                <li key={i} className="flex items-start gap-3">
+                                  <span className={`text-${item.color.split('-')[1]}-500`}>-</span>
+                                  <span>{point}</span>
+                                </li>
+                            ))}
+                          </ul>
 
-                      {/* Right side - Sticky Information */}
-                      <div className="relative col-span-5">
-                        <div className="sticky top-24">
-                          <span className="text-sm font-medium text-neutral-400">
-
-                            <div className="relative col-span-3 space-y-6">
-                              {/* Title with dash */}
-                              <div className="flex items-center gap-3">
-                                <span className={`h-1 w-6 rounded-full ${item.color}`} />
-                                <h2 className="text-xl font-bold">{item.title}</h2>
+                          {/* Example stack badges */}
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {item.tags?.map((tag, i) => (
+                              <div key={i} className="mt-4 flex flex-wrap gap-2">
+                                <Badge className="bg-neutral-800 text-neutral-200">{tag}</Badge>
                               </div>
-
-                              <p className="text-sm text-neutral-400">
-                                {item.description}
-                              </p>
-
-                              <ul className="space-y-3">
-                                {item.points?.map((point, i) => (
-                                    <li key={i} className="flex items-start gap-3">
-                                      <span className={`text-${item.color.split('-')[1]}-500`}>-</span>
-                                      <span>{point}</span>
-                                    </li>
-                                ))}
-                              </ul>
-
-                              {/* Example stack badges */}
-                              <div className="mt-4 flex flex-wrap gap-2">
-                                {item.tags?.map((tag, i) => (
-                                  <div key={i} className="mt-4 flex flex-wrap gap-2">
-                                    <Badge className="bg-neutral-800 text-neutral-200">{tag}</Badge>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-
-
-                          </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+
+
+                      </span>
+                    </div>
+                  </div>
           
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-
-
+                </motion.div>
+              ))}
+            </div>
+          </div>
       </div>
     </>
   );
