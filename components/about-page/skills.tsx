@@ -3,41 +3,41 @@ import { BackgroundLines } from '../ui/background-lines';
 import SkillBadge from './skillBadge';
 import Header from '../header';
 
-import javaLogo from "@/assets/java.png";
-import pythonLogo from "@/assets/python.png";
-import javascriptLogo from "@/assets/javascript.png";
-import typescriptLogo from "@/assets/typescript.png";
-import cLogo from "@/assets/c.png";
-import cppLogo from "@/assets/cpp.png";
-import graphqlLogo from "@/assets/graphql.png";
-import haskellLogo from "@/assets/haskell.png";
-import rustLogo from "@/assets/rust.png";
+import javaLogo from "@/assets/logos/java.png";
+import pythonLogo from "@/assets/logos/python.png";
+import javascriptLogo from "@/assets/logos/javascript.png";
+import typescriptLogo from "@/assets/logos/typescript.png";
+import cLogo from "@/assets/logos/c.png";
+import cppLogo from "@/assets/logos/cpp.png";
+import graphqlLogo from "@/assets/logos/graphql.png";
+import haskellLogo from "@/assets/logos/haskell.png";
+import rustLogo from "@/assets/logos/rust.png";
 
-import nodejsLogo from "@/assets/nodejs.png";
-import nextjsLogo from "@/assets/nextjs.svg";
-import reactLogo from "@/assets/react.png";
-import expressLogo from "@/assets/express.png";
-import viteLogo from "@/assets/vite.png";
-import npmLogo from "@/assets/npm.png";
+import nodejsLogo from "@/assets/logos/nodejs.png";
+import nextjsLogo from "@/assets/logos/nextjs.svg";
+import reactLogo from "@/assets/logos/react.png";
+import expressLogo from "@/assets/logos/express.png";
+import viteLogo from "@/assets/logos/vite.png";
+import npmLogo from "@/assets/logos/npm.png";
 
-import mongodbLogo from "@/assets/mongodb.svg";
-import postgresqlLogo from "@/assets/postgresql.png";
-import supabaseLogo from "@/assets/supabase.png";
-import mysqlLogo from "@/assets/mysql.png";
-import firebaseLogo from "@/assets/firebase.png";
+import mongodbLogo from "@/assets/logos/mongodb.svg";
+import postgresqlLogo from "@/assets/logos/postgresql.png";
+import supabaseLogo from "@/assets/logos/supabase.png";
+import mysqlLogo from "@/assets/logos/mysql.png";
+import firebaseLogo from "@/assets/logos/firebase.png";
 
-import htmlLogo from "@/assets/html.png";
-import cssLogo from "@/assets/css.png";
-import tailwindLogo from "@/assets/tailwind.png";
-import bootstrapLogo from "@/assets/bootstrap.png";
+import htmlLogo from "@/assets/logos/html.png";
+import cssLogo from "@/assets/logos/css.png";
+import tailwindLogo from "@/assets/logos/tailwind.png";
+import bootstrapLogo from "@/assets/logos/bootstrap.png";
 
-import postmanLogo from "@/assets/postman.png";
-import gitLogo from "@/assets/git.png";
-import githubLogo from "@/assets/github.png";
-import gitlabLogo from "@/assets/gitlab.png";
-import sourcetreeLogo from "@/assets/sourcetree.png";
-import vscodeLogo from "@/assets/vscode.png";
-import intellijLogo from "@/assets/intellij.png";
+import postmanLogo from "@/assets/logos/postman.png";
+import gitLogo from "@/assets/logos/git.png";
+import githubLogo from "@/assets/logos/github.png";
+import gitlabLogo from "@/assets/logos/gitlab.png";
+import sourcetreeLogo from "@/assets/logos/sourcetree.png";
+import vscodeLogo from "@/assets/logos/vscode.png";
+import intellijLogo from "@/assets/logos/intellij.png";
 
 const skillsList = [
   { skill: "Java", logo: javaLogo },

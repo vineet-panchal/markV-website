@@ -4,17 +4,17 @@ import React from 'react';
 import { cn } from "@/lib/utils";
 import { AnimatedList } from '@/components/magicui/animated-list';
 
-import nextjsIcon from "@/assets/nextjs.svg";
-import reactIcon from "@/assets/react.png";
-import expressIcon from "@/assets/express.png";
-import javaIcon from "@/assets/java.png";
-import pythonIcon from "@/assets/python.png";
-import javascriptIcon from "@/assets/javascript.png";
-import mongodbIcon from "@/assets/mongodb.svg";
-import postgresqlIcon from "@/assets/postgresql.png";
-import springbootIcon from "@/assets/springboot.png";
-import supabaseIcon from "@/assets/supabase.png";
-import typescriptIcon from "@/assets/typescript.png";
+import nextjsIcon from "@/assets/logos/nextjs.svg";
+import reactIcon from "@/assets/logos/react.png";
+import expressIcon from "@/assets/logos/express.png";
+import javaIcon from "@/assets/logos/java.png";
+import pythonIcon from "@/assets/logos/python.png";
+import javascriptIcon from "@/assets/logos/javascript.png";
+import mongodbIcon from "@/assets/logos/mongodb.svg";
+import postgresqlIcon from "@/assets/logos/postgresql.png";
+import springbootIcon from "@/assets/logos/springboot.png";
+import supabaseIcon from "@/assets/logos/supabase.png";
+import typescriptIcon from "@/assets/logos/typescript.png";
 
 interface Item {
   name: string;

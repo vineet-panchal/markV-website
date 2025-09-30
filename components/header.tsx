@@ -1,5 +1,7 @@
 import React from 'react';
+import { cn } from '@/lib/utils';
 import { AuroraText } from './magicui/aurora-text';
+import { Spotlight } from './ui/spotlight';
 
 interface HeaderProps {
   heading: string;
@@ -11,6 +13,7 @@ export default function Header({ heading, subHeading, coloredText }: HeaderProps
   return (
     <>
       <div className="font-[outfit] text-center text-5xl md:text-1xl font-bold pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b bg-white bg-clip-text leading-none tracking-tighter text-transparent">
+      
         <div className="bg-white bg-clip-text text-center text-2xl font-extralight text-transparent font-sans">
           {heading}
         </div>

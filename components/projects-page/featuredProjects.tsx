@@ -10,6 +10,7 @@ import FashionDisasterAvoiderImg from '../../assets/featured-projects/fashion.pn
 import RateMyProfessorImg from '../../assets/featured-projects/rate-my-professor.png';
 import SmartdeckImg from '../../assets/featured-projects/smartdeck.png';
 import TeachForCambodiaImg from '../../assets/featured-projects/tfc.png';
+import AStarPathfinderImg from '../../assets/featured-projects/astar.png';
 
 import type { StaticImageData } from "next/image";
 
@@ -20,7 +21,7 @@ type Project = {
   tags?: string[]
   color: string
   image?: string | StaticImageData
-  header?: string
+  header: string
 };
 
 const projectsData: Project[] = [
@@ -86,7 +87,7 @@ const projectsData: Project[] = [
     points: ["asdf", "asdf", "asdf"],
     tags: ["Python", "Pygame"],
     color: "bg-purple-500",
-    image: undefined,
+    image: AStarPathfinderImg,
     header: "Watch algorithms find their way."
   }
 ];
@@ -108,7 +109,7 @@ export default function FeaturedProjects() {
                 >
                   {/* Left side - Project Showcase */}
                   <div className="relative col-span-7 ">
-                    <FeaturedProjectDisplay bgColor={item.color} displayImg={item.image} />
+                    <FeaturedProjectDisplay bgColor={item.color} displayImg={item.image} header={item.header} />
                   </div>
 
                   {/* Right side - Sticky Information */}

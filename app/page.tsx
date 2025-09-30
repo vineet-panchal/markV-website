@@ -9,7 +9,7 @@ import TimeMachine from "@/components/home-page/timemachine";
 export default function Home() {
   return (
     <>
-      <div className="bg-[var(--color-midnight)]">
+      <div className="bg-[var(--color-midnight)] m-0 p-0">
         <Navbar />
         <Introduction />
         <HomeGrid />

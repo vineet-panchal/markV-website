@@ -2,9 +2,10 @@ import React from 'react';
 // import { BackgroundRippleEffect } from '../ui/background-ripple-effect';
 import { cn } from '@/lib/utils';
 import { AuroraText } from '@/components/magicui/aurora-text';
+import { PixelatedCanvas } from '../ui/pixelated-canvas';
+// import "../../assets/pfp/zoomedout.png";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
-
 
 const Icons = {
   linkedin: (props: IconProps) => (
@@ -63,7 +64,7 @@ const contact = {
 export default function AboutMe() {
   return (
     <>
-      <div className="relative flex h-[50rem] w-full items-center justify-center bg-#262626">
+      <div className="relative flex h-[50rem] w-full items-center justify-center bg-[var(--color-midnight)] overflow-hidden">
         <div
           className={cn(
             "absolute inset-0",
@@ -117,7 +118,28 @@ export default function AboutMe() {
             </div>
           </div>
         </div>
-        <div className="relative inline float-right w-full h-full bg-black p-15 pr-60">asdf</div>
+
+        <div className="relative inline float-right w-full h-full p-20 pr-60">
+          <PixelatedCanvas
+            src="/pfp/regular.JPG"
+            width={400}
+            height={550}
+            cellSize={3}
+            dotScale={0.9}
+            shape="square"
+            backgroundColor="#000000"
+            dropoutStrength={0.01}
+            interactive
+            distortionStrength={0.1}
+            distortionRadius={200}
+            distortionMode="repel"
+            followSpeed={0.2}
+            jitterStrength={4}
+            jitterSpeed={1}
+            sampleAverage
+            className="rounded-xl shadow-lg mt-10"
+          />
+        </div>
       </div>
     </>
   );

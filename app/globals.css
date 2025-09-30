@@ -5,6 +5,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 @theme inline {
   --font-nyght-serif-dark: 'Nyght Serif Dark', 'Nyght Serif Dark Fallback', serif;
 
@@ -49,6 +54,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --animate-grid: grid 15s linear infinite;
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
   @keyframes grid {
   0% {
     transform: translateY(-50%);
@@ -126,6 +132,18 @@
     transform: translateZ(0) rotate(270deg);}
   100% {
     transform: translateZ(0) rotate(360deg);}}};
+
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
 
 :root {
   --bento-card: #333332;
