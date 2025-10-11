@@ -4,6 +4,7 @@ import MainHeader from '@/components/main-header';
 import FeaturedProjects from '@/components/projects-page/featuredProjects';
 import ProjectsList from '@/components/projects-page/projectsList';
 import NextVentures from '@/components/projects-page/nextVentures';
+import Footer from '@/components/footer';
 
 import type { Metadata } from "next";
 
@@ -25,6 +26,7 @@ export default function Page() {
         <FeaturedProjects />
         <ProjectsList />
         <NextVentures />
+        <Footer />
       </div>
     </>
   )

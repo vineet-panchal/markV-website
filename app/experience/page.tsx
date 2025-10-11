@@ -3,7 +3,7 @@ import Navbar from '@/components/navbar';
 import MainHeader from '@/components/main-header';
 import WorkTimeline from '@/components/experience-page/workTimeline';
 import CodingJourney from '@/components/experience-page/codingJourney';
-
+import Footer from '@/components/footer'
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -23,6 +23,7 @@ export default function Page() {
         />
         <WorkTimeline />
         <CodingJourney />
+        <Footer />
       </div>
     </>
   )

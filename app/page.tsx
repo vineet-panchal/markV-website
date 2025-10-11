@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar";
 import Introduction from "@/components/home-page/introduction";
 import HomeGrid from "@/components/home-page/homegrid";
 import TimeMachine from "@/components/home-page/timemachine";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <Introduction />
         <HomeGrid />
         <TimeMachine />
+        <Footer />
       </div>
     </>
   );

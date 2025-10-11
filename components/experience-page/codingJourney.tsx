@@ -7,7 +7,6 @@ export default function CodingJourney() {
     <>
       <div className="bg-[var(--color-midnight)]">
         <Header heading="My Coding Journey" subHeading="How it all" coloredText="started." />
-        Coding Journey
         <Journey />
       </div>
     </>
