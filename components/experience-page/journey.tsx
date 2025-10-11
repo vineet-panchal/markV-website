@@ -37,6 +37,26 @@ export default function Journey() {
 
 const TIMELINE: ArcTimelineItem[] = [
   {
+    time: "2018",
+    steps: [
+      {
+        icon: <GlobeIcon width={20} height={20} />,
+        content: 
+          "Wrote my first program to guide a robot through a path with obstacles."
+      },
+    ],
+  },
+  {
+    time: "2019",
+    steps: [
+      {
+        icon: <CubeIcon width={20} height={20} />,
+        content: 
+          "Created my first game using Scratch."
+      },
+    ],
+  },
+  {
     time: "2020",
     steps: [
       {
@@ -44,11 +64,6 @@ const TIMELINE: ArcTimelineItem[] = [
         content:
           "Wrote my first few lines of code and built a simple website in HTML/CSS.",
       },
-      // {
-      //   icon: <CubeIcon width={20} height={20} />,
-      //   content:
-      //     "Launched first AI-powered mobile app for personalized recommendations.",
-      // },
     ],
   },
   {
