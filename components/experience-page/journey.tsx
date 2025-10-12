@@ -24,7 +24,7 @@ export default function Journey() {
       //   "[--description-color:#555555] dark:[--description-color:#d4d4d4]"
       // )}
       data={TIMELINE}
-      defaultActiveStep={{ time: "2025 Q2", stepIndex: 0 }}
+      defaultActiveStep={{ time: "2025", stepIndex: 0 }}
       arcConfig={{
         circleWidth: 4500,
         angleBetweenMinorSteps: 0.4,
@@ -168,25 +168,6 @@ const TIMELINE: ArcTimelineItem[] = [
         icon: <RocketIcon width={20} height={20} />,
         content:
           "Joined the Performance Engineering team at Dayforce as a Software Developer Intern. Working on the development of performance tracking platforms in C#, ASP.NET, React, SQL Server, and TypeScript.",
-      },
-    ],
-  },
-  {
-    time: "2025 Q2",
-    steps: [
-      {
-        icon: <GearIcon width={20} height={20} />,
-        content: "Rebranded company with new logo and visual identity.",
-      },
-      {
-        icon: <StarIcon width={20} height={20} />,
-        content:
-          "Launched AI-driven content creation tool for marketing teams.",
-      },
-      {
-        icon: <CubeIcon width={20} height={20} />,
-        content:
-          "Acquired a competitor in the AI space to strengthen market position.",
       },
     ],
   },

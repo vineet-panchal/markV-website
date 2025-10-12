@@ -107,6 +107,7 @@ export default function Footer() {
                 <Link
                   className="hover:underline font-[outfit] font-1xl text-white"
                   href={item.href}
+                  key={item.href}
                 >
                   {item.label}
                 </Link>
@@ -115,11 +116,10 @@ export default function Footer() {
             {/* right-bottom */}
             <div className="h-[20%] w-full flex items-end justify-end">
               {Object.entries(LINKS.contact.social).map(([name, social]) => (
-                <Tooltip>
+                <Tooltip key={name}>
                   <TooltipTrigger asChild>
                     <Link
                       href={social.url}
-                      key={name}
                       aria-label={social.name}
                       target={"target" in social ? social.target : undefined}
                       rel={"target" in social && social.target === "_blank" ? "noopener noreferrer" : undefined}
