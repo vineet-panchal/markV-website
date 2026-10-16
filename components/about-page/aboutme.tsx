@@ -79,7 +79,7 @@ export default function AboutMe() {
 
             <div className="font-[outfit] text-5xl md:text-1xl font-bold pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b bg-white bg-clip-text leading-none tracking-tighter text-transparent">
               <span className="">
-                I'm Vineet, a <br />curious 
+                I&apos;m Vineet, a <br />curious 
                 <span>
                   <AuroraText className="text-6xl italic font-[nyght-serif-dark]"> builder. </AuroraText>
                 </span> 
