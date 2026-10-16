@@ -1,0 +1,23 @@
+/* Keyframes for the homepage bento tiles (components/home-page/bento) */
+
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes eq-bounce {
+  from { transform: scaleY(0.25); }
+  to   { transform: scaleY(1); }
+}
+
+/* Tiles mark themselves off screen so their looping animations stop costing frames */
+[data-offscreen] *,
+[data-offscreen] *::after {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="orbit-spin"],
+  [style*="eq-bounce"] {
+    animation: none !important;
+  }
+}

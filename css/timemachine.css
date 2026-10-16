@@ -1,0 +1,19 @@
+/* Keyframes for the homepage time machine section */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
+/* Glow under the car breathes in time with its float */
+@keyframes hover-glow {
+  0%, 100% { opacity: 0.9; scale: 1 1; }
+  50%      { opacity: 0.55; scale: 0.85 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[float_6s_ease-in-out_infinite\],
+  .animate-\[hover-glow_3s_ease-in-out_infinite\] {
+    animation: none;
+  }
+}
