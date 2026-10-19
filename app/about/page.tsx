@@ -3,6 +3,7 @@ import Navbar from '@/components/navbar';
 import AboutMe from '@/components/about-page/aboutme';
 import Skills from '@/components/about-page/skills';
 import Certifications from '@/components/about-page/certifications';
+import GitHubStats from '@/components/about-page/github/github-stats';
 import Footer from '@/components/footer';
 
 import type { Metadata } from "next";
@@ -20,6 +21,7 @@ export default function Page() {
         <AboutMe />
         <Skills />
         <Certifications />
+        <GitHubStats />
         <Footer />
       </div>
     </>

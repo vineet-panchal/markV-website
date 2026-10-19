@@ -2,20 +2,15 @@
 
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
-import Image from "next/image";
 import { useState } from "react";
-import type { StaticImageData } from "next/image";
 
-export const HoverEffect = ({
+export const HoverEffect = <T extends { link: string }>({
   items,
+  renderItem,
   className,
 }: {
-  items: {
-    title: string;
-    description: string;
-    link: string;
-    logo?: string | StaticImageData;
-  }[];
+  items: T[];
+  renderItem: (item: T) => React.ReactNode;
   className?: string;
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -29,9 +24,10 @@ export const HoverEffect = ({
     >
       {items.map((item, idx) => (
         <a
-          href={item?.link}
-          key={item?.link}
+          href={item.link}
+          key={item.link}
           target="_blank"
+          rel="noopener noreferrer"
           className="relative group block p-3 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -53,22 +49,7 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
-            {item.logo && (
-              <CardLogo>
-                <Image
-                  src={item.logo}
-                  alt={`${item.title} logo`}
-                  fill
-                  className="object-contain opacity-20 scale-120"
-                />
-              </CardLogo>
-            )}
-            <div className="relative z-20">
-              <CardTitle>{item.title}</CardTitle>
-              <CardDescription>{item.description}</CardDescription>
-            </div>
-          </Card>
+          {renderItem(item)}
         </a>
       ))}
     </div>
@@ -124,19 +105,5 @@ export const CardDescription = ({
     >
       {children}
     </p>
-  );
-};
-
-export const CardLogo = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) => {
-  return (
-    <div className={cn("absolute inset-0 flex items-center justify-center", className)}>
-      {children}
-    </div>
   );
 };
