@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const MOVEMENT_DAMPING = 1400;
 
-const GLOBE_CONFIG: COBEOptions = {
+export const GLOBE_CONFIG: COBEOptions = {
   width: 800,
   height: 800,
   onRender: () => {},
@@ -104,7 +104,13 @@ export function Globe({
     });
 
     setTimeout(() => (canvasRef.current!.style.opacity = "1"), 0);
+
+    // Stop rendering while the globe is scrolled out of view
+    const io = new IntersectionObserver(([entry]) => globe.toggle(entry.isIntersecting));
+    io.observe(canvasRef.current!);
+
     return () => {
+      io.disconnect();
       globe.destroy();
       window.removeEventListener("resize", onResize);
     };

@@ -1,146 +1,216 @@
-import React from 'react';
-import Image from 'next/image';
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUp, ArrowUpRight, Check, Copy, Mail } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Logo from "@/assets/logo.png";
-import Link from 'next/link';
-import { buttonVariants } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 
-export type IconProps = React.HTMLAttributes<SVGElement>;
+const EMAIL = "vineetpanchal03@gmail.com";
+const MAILTO = `mailto:${EMAIL}?subject=Hello%20Vineet&body=Hi%20Vineet%2C%0A%0A`;
 
-const Icons = {
-  linkedin: (props: IconProps) => (
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <title>LinkedIn</title>
-      <path
-        fill="white"
-        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-      />
-    </svg>
-  ),
-  github: (props: IconProps) => (
-    <svg viewBox="0 0 438.549 438.549" {...props}>
-      <path
-        fill="white"
-        d="M409.132 114.573c-19.608-33.596-46.205-60.194-79.798-79.8-33.598-19.607-70.277-29.408-110.063-29.408-39.781 0-76.472 9.804-110.063 29.408-33.596 19.605-60.192 46.204-79.8 79.8C9.803 148.168 0 184.854 0 224.63c0 47.78 13.94 90.745 41.827 128.906 27.884 38.164 63.906 64.572 108.063 79.227 5.14.954 8.945.283 11.419-1.996 2.475-2.282 3.711-5.14 3.711-8.562 0-.571-.049-5.708-.144-15.417a2549.81 2549.81 0 01-.144-25.406l-6.567 1.136c-4.187.767-9.469 1.092-15.846 1-6.374-.089-12.991-.757-19.842-1.999-6.854-1.231-13.229-4.086-19.13-8.559-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-.951-2.568-2.098-3.711-3.429-1.142-1.331-1.997-2.663-2.568-3.997-.572-1.335-.098-2.43 1.427-3.289 1.525-.859 4.281-1.276 8.28-1.276l5.708.853c3.807.763 8.516 3.042 14.133 6.851 5.614 3.806 10.229 8.754 13.846 14.842 4.38 7.806 9.657 13.754 15.846 17.847 6.184 4.093 12.419 6.136 18.699 6.136 6.28 0 11.704-.476 16.274-1.423 4.565-.952 8.848-2.383 12.847-4.285 1.713-12.758 6.377-22.559 13.988-29.41-10.848-1.14-20.601-2.857-29.264-5.14-8.658-2.286-17.605-5.996-26.835-11.14-9.235-5.137-16.896-11.516-22.985-19.126-6.09-7.614-11.088-17.61-14.987-29.979-3.901-12.374-5.852-26.648-5.852-42.826 0-23.035 7.52-42.637 22.557-58.817-7.044-17.318-6.379-36.732 1.997-58.24 5.52-1.715 13.706-.428 24.554 3.853 10.85 4.283 18.794 7.952 23.84 10.994 5.046 3.041 9.089 5.618 12.135 7.708 17.705-4.947 35.976-7.421 54.818-7.421s37.117 2.474 54.823 7.421l10.849-6.849c7.419-4.57 16.18-8.758 26.262-12.565 10.088-3.805 17.802-4.853 23.134-3.138 8.562 21.509 9.325 40.922 2.279 58.24 15.036 16.18 22.559 35.787 22.559 58.817 0 16.178-1.958 30.497-5.853 42.966-3.9 12.471-8.941 22.457-15.125 29.979-6.191 7.521-13.901 13.85-23.131 18.986-9.232 5.14-18.182 8.85-26.84 11.136-8.662 2.286-18.415 4.004-29.263 5.146 9.894 8.562 14.842 22.077 14.842 40.539v60.237c0 3.422 1.19 6.279 3.572 8.562 2.379 2.279 6.136 2.95 11.276 1.995 44.163-14.653 80.185-41.062 108.068-79.226 27.88-38.161 41.825-81.126 41.825-128.906-.01-39.771-9.818-76.454-29.414-110.049z"
-      ></path>
-    </svg>
-  ),
-  email: (props: IconProps) => (
-    <svg width="20px" height="15px" viewBox="0 0 20 15" version="1.1" xmlns="http://www.w3.org/2000/svg">
-      <g id="Page-1" stroke="none" fill="white">
-        <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -922.000000)" fill="white">
-          <g id="icons" transform="translate(56.000000, 160.000000)">
-            <path 
-              d="M294,774.474 L284,765.649 L284,777 L304,777 L304,765.649 L294,774.474 Z M294.001,771.812 L284,762.981 L284,762 L304,762 L304,762.981 L294.001,771.812 Z"
-            ></path>
-          </g>
-        </g>
-      </g>
-    </svg>
-  ),
-};
+const NAVIGATION = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/experience", label: "Experience" },
+  { href: "/projects", label: "Projects" },
+];
 
-const LINKS = {
-  navigation: [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/experience", label: "Experience" },
-    { href: "/projects", label: "Projects" }
-  ],
-  contact: {
-    social: {
-      GitHub: {
-        name: "GitHub",
-        url: "https://github.com/vineet-panchal",
-        target: "_blank",
-        icon: Icons.github,
-      },
-      LinkedIn: {
-        name: "LinkedIn",
-        url: "https://www.linkedin.com/in/vineetpanchal1/",
-        target: "_blank",
-        icon: Icons.linkedin,
-      },
-      email: {
-        name: "Send Email",
-        url: "mailto:vineetpanchal03@gmail.com?subject=Hello%20Vineet&body=Hi%20Vineet%2C%0A%0A",
-        icon: Icons.email,
-      },
-    },
-  },
+const SOCIALS = [
+  { label: "GitHub", href: "https://github.com/vineet-panchal", icon: FaGithub },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/vineetpanchal1/", icon: FaLinkedin },
+  { label: "Email", href: MAILTO, icon: Mail },
+];
+
+const COLOPHON = [
+  ["Type", "Inter Tight, Geist Mono, DM Serif Display"],
+  ["Built with", "Next.js, Tailwind CSS, Motion"],
+  ["3D", "Spline, cobe"],
+];
+
+function ColumnTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="mb-4 font-(family-name:--font-geist-mono) text-xs tracking-wide text-zinc-500">
+      {"// "}
+      {children}
+    </p>
+  );
 }
 
+function TorontoTime() {
+  const [time, setTime] = useState<string | null>(null);
+  useEffect(() => {
+    const fmt = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Toronto", hour: "2-digit", minute: "2-digit", hour12: false });
+    const tick = () => setTime(fmt.format(new Date()));
+    tick();
+    const id = setInterval(tick, 30_000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-(family-name:--font-geist-mono) text-xs text-zinc-400">
+      <span className="size-1.5 animate-pulse rounded-full bg-[#3dff7a] shadow-[0_0_8px_#3dff7a]" />
+      Toronto · {time ?? "--:--"}
+    </span>
+  );
+}
+
+function CopyEmail() {
+  const [copied, setCopied] = useState(false);
+  return (
+    <button
+      type="button"
+      onClick={async () => {
+        try {
+          await navigator.clipboard.writeText(EMAIL);
+          setCopied(true);
+          setTimeout(() => setCopied(false), 1800);
+        } catch {
+          window.location.href = MAILTO;
+        }
+      }}
+      className="group inline-flex cursor-pointer items-center gap-3 rounded-full border border-white/20 bg-white/[0.08] py-2 pl-5 pr-2 font-(family-name:--font-geist-mono) text-sm text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md transition-all hover:border-white/35 hover:bg-white/[0.14]"
+    >
+      {copied ? "copied to clipboard" : EMAIL}
+      <span className="flex size-8 items-center justify-center rounded-full bg-white text-zinc-900">
+        {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
+      </span>
+    </button>
+  );
+}
+
+// Huge outlined name; the highlight gradient fills in wherever the cursor is
+function Wordmark() {
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div
+      ref={ref}
+      aria-hidden
+      onMouseMove={(e) => {
+        const el = ref.current;
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--wx", `${e.clientX - r.left}px`);
+        el.style.setProperty("--wy", `${e.clientY - r.top}px`);
+        el.style.setProperty("--wo", "1");
+      }}
+      onMouseLeave={() => ref.current?.style.setProperty("--wo", "0")}
+      className="@container relative select-none overflow-hidden px-4 [--wo:0]"
+    >
+      <p className="whitespace-nowrap text-center font-(family-name:--font-inter-tight) text-[12.4cqw] font-bold leading-[0.8] tracking-tighter text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.14)]">
+        VINEET PANCHAL
+      </p>
+      <p
+        className="pointer-events-none absolute inset-0 px-4 whitespace-nowrap opacity-(--wo) transition-opacity duration-500 bg-gradient-to-r from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center font-(family-name:--font-inter-tight) text-[12.4cqw] font-bold leading-[0.8] tracking-tighter text-transparent"
+        style={{
+          maskImage: "radial-gradient(260px circle at var(--wx, 50%) var(--wy, 50%), black 20%, transparent 70%)",
+          WebkitMaskImage: "radial-gradient(260px circle at var(--wx, 50%) var(--wy, 50%), black 20%, transparent 70%)",
+        }}
+      >
+        VINEET PANCHAL
+      </p>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#1a1a1a] to-transparent" />
+    </div>
+  );
+}
 
 export default function Footer() {
   return (
-    <>
-      <div className="flex item-center justify-center p-5">
-        <div className="h-[25vh] w-[65%] p-5 flex bg-[#1a1a1a] rounded-4xl">
-          <div className="w-[50%] h-full flex flex-col">
-            {/* left-top */}
-            <div className="flex-1 w-full">
-              <Image src={Logo} alt="vp-logo" width={40} height={40} className="pb-3" />
-              <h6 className="w-[20vw] font-[outfit] text-1xl text-white">
-                Every pixel tells a story, thanks for scrolling!
-                You've reached the end ... or maybe the beginning.
-              </h6>
-            </div>
-
-            {/* left-bottom */}
-            <div className="h-[20%] w-full flex items-end justify-start">
-              <h6 className="font-[outfit] text-1xl text-white">
-                © 2025 Vineet Panchal. All rights reserved.
-              </h6>
-            </div>
+    <footer className="px-4 pb-6 pt-16">
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/[0.08] bg-[#1a1a1a] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+        {/* Call to action */}
+        <div className="relative flex flex-col items-start justify-between gap-6 border-b border-white/[0.06] p-8 md:flex-row md:items-end md:p-10">
+          <div aria-hidden className="absolute -left-20 -top-24 size-80 rounded-full bg-[#8c1eff]/15 blur-3xl" />
+          <div aria-hidden className="absolute -right-10 -top-20 size-72 rounded-full bg-[#ff2975]/10 blur-3xl" />
+          <div className="relative">
+            <p className="font-(family-name:--font-geist-mono) text-xs tracking-wide text-zinc-500">{"// got an idea?"}</p>
+            <h2 className="mt-2 font-(family-name:--font-inter-tight) text-4xl font-bold tracking-tighter text-white md:text-6xl">
+              Let&apos;s build{" "}
+              <span className="bg-gradient-to-r from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text pr-1 font-(family-name:--font-dm-serif-display) font-normal tracking-normal text-transparent italic">
+                something.
+              </span>
+            </h2>
           </div>
-
-          <div className="w-[50%] h-full flex flex-col">
-            {/* right-top */}
-            <div className="flex-1 w-full flex flex-col items-end">
-              {LINKS.navigation.map((item) => (
-                <Link
-                  className="hover:underline font-[outfit] font-1xl text-white"
-                  href={item.href}
-                  key={item.href}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-            {/* right-bottom */}
-            <div className="h-[20%] w-full flex items-end justify-end">
-              {Object.entries(LINKS.contact.social).map(([name, social]) => (
-                <Tooltip key={name}>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={social.url}
-                      aria-label={social.name}
-                      target={"target" in social ? social.target : undefined}
-                      rel={"target" in social && social.target === "_blank" ? "noopener noreferrer" : undefined}
-                      className={cn(
-                        buttonVariants({ variant: "ghost", size: "icon" }),
-                        "size-9 rounded-full",
-                        "hover:bg-zinc-900 hover:text-white" 
-                      )}
-                    >
-                      <social.icon className="size-4 text-[#c7c5c5]" />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{name}</p>
-                  </TooltipContent>
-                </Tooltip>
-              ))}
-            </div>
+          <div className="relative">
+            <CopyEmail />
           </div>
         </div>
+
+        {/* Columns */}
+        <div className="grid grid-cols-2 gap-10 p-8 md:grid-cols-[1.4fr_1fr_1fr_1.4fr] md:p-10">
+          <div className="col-span-2 md:col-span-1">
+            <Image src={Logo} alt="Vineet Panchal logo" width={40} height={40} />
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-400">
+              Every pixel tells a story, thanks for scrolling! You&apos;ve reached the end… or maybe the beginning.
+            </p>
+            <div className="mt-5">
+              <TorontoTime />
+            </div>
+          </div>
+
+          <div>
+            <ColumnTitle>sitemap</ColumnTitle>
+            <ul className="space-y-2.5">
+              {NAVIGATION.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-sm text-zinc-300 transition-colors hover:text-white">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <ColumnTitle>elsewhere</ColumnTitle>
+            <ul className="space-y-2.5">
+              {SOCIALS.map(({ label, href, icon: Icon }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target={href.startsWith("mailto") ? undefined : "_blank"}
+                    rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                    className="group/s inline-flex items-center gap-2 text-sm text-zinc-300 transition-colors hover:text-white"
+                  >
+                    <Icon className="size-3.5 text-zinc-500 transition-colors group-hover/s:text-white" />
+                    {label}
+                    <ArrowUpRight className="size-3 opacity-0 transition-all group-hover/s:-translate-y-0.5 group-hover/s:opacity-100" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="col-span-2 md:col-span-1">
+            <ColumnTitle>colophon</ColumnTitle>
+            <dl className="space-y-2.5">
+              {COLOPHON.map(([term, value]) => (
+                <div key={term} className="flex gap-3 text-sm">
+                  <dt className="w-20 shrink-0 text-zinc-500">{term}</dt>
+                  <dd className="text-zinc-300">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+
+        <Wordmark />
+
+        {/* Bottom bar */}
+        <div className="flex flex-col items-center justify-between gap-3 border-t border-white/[0.06] px-8 py-5 font-(family-name:--font-geist-mono) text-xs text-zinc-500 md:flex-row md:px-10">
+          <span>© {new Date().getFullYear()} Vineet Panchal. All rights reserved.</span>
+          <span>Mark V · designed and built by Vineet</span>
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="group inline-flex cursor-pointer items-center gap-1.5 transition-colors hover:text-white"
+          >
+            Back to top
+            <ArrowUp className="size-3.5 transition-transform group-hover:-translate-y-0.5" />
+          </button>
+        </div>
       </div>
-    </>
+    </footer>
   );
 }
