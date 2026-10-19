@@ -50,7 +50,7 @@ function getStats(days: Day[]) {
   };
 }
 
-function CountUp({ value, start }: { value: number; start: boolean }) {
+export function CountUp({ value, start }: { value: number; start: boolean }) {
   const ref = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     if (!start || !ref.current) return;

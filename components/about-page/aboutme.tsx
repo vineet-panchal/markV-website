@@ -1,9 +1,11 @@
+'use client';
+
 import React from 'react';
 // import { BackgroundRippleEffect } from '../ui/background-ripple-effect';
 import { cn } from '@/lib/utils';
 import { AuroraText } from '@/components/magicui/aurora-text';
-import { PixelatedCanvas } from '../ui/pixelated-canvas';
-// import "../../assets/pfp/zoomedout.png";
+import ProfileCard from '../ui/profile-card';
+import { Mail } from 'lucide-react';
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -64,7 +66,7 @@ const contact = {
 export default function AboutMe() {
   return (
     <>
-      <div className="relative flex h-[50rem] w-full items-center justify-center bg-[var(--color-midnight)] overflow-hidden">
+      <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--color-midnight)]">
         <div
           className={cn(
             "absolute inset-0",
@@ -74,19 +76,19 @@ export default function AboutMe() {
         />
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[var(--color-midnight)] [mask-image:radial-gradient(ellipse_at_center,transparent_-180%,black)] dark:bg-black"></div>
 
-        <div className="relative inline float-left w-full h-full p-15 pl-90">
-          <div className="relative flex flex-col gap-8 items-start justify-center h-full w-full text-left">
+        <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-4 pb-8 pt-32 lg:pb-20 sm:px-8 md:grid-cols-[minmax(0,1fr)_auto] md:gap-10 lg:gap-20 lg:px-12">
+          <div className="flex flex-col items-start gap-8 text-left">
 
-            <div className="font-[outfit] text-5xl md:text-1xl font-bold pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b bg-white bg-clip-text leading-none tracking-tighter text-transparent">
+            <h1 className="font-(family-name:--font-inter-tight) text-[2.75rem] sm:text-5xl lg:text-6xl font-bold pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b bg-white bg-clip-text leading-none tracking-tighter text-transparent">
               <span className="">
                 I&apos;m Vineet, a <br />curious 
                 <span>
-                  <AuroraText className="text-6xl italic font-[nyght-serif-dark]"> builder. </AuroraText>
+                  <AuroraText className="text-[1.08em] italic font-(family-name:--font-dm-serif-display) font-normal tracking-normal"> builder. </AuroraText>
                 </span> 
               </span>
-            </div>
+            </h1>
 
-            <div className="font-light text-base md:text-1xl text-white dark:text-neutral-200 ">
+            <div className="max-w-xl text-base font-light leading-relaxed text-zinc-200 sm:text-lg">
               I am a third-year Computer Science student at Toronto Metropolitan University, 
               passionate about building innovative solutions and always looking for ways to expand 
               my skills in software development. I thrive in collaborative environments, where I can 
@@ -102,45 +104,45 @@ export default function AboutMe() {
               a way to connect, create, and make a difference.
             </div>
 
-            <div className="flex flex-row gap-4">
-              {Object.values(contact).map((item) => (
+            <div className="flex flex-wrap items-center gap-2">
+              <a
+                href={contact.email.url}
+                className="group inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/[0.08] py-2 pl-5 pr-2 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md transition-all duration-300 hover:border-white/35 hover:bg-white/[0.14]"
+              >
+                Send an email
+                <span className="flex size-8 items-center justify-center rounded-full bg-white text-zinc-900 transition-transform duration-300 group-hover:translate-x-1">
+                  <Mail className="size-4" />
+                </span>
+              </a>
+              {[contact.LinkedIn, contact.Github].map((item) => (
                 <a
                   key={item.name}
                   href={item.url}
-                  {...(item.target ? { target: item.target } : {})}
-                  rel="noreferrer"
-                  className="transition-opacity hover:opacity-80"
+                  target={item.target}
+                  rel="noopener noreferrer"
+                  aria-label={item.name}
+                  title={item.name}
+                  className="flex size-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.05] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/[0.1]"
                 >
-                  <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" />
+                  <item.icon className="size-4" />
                 </a>
               ))}
             </div>
           </div>
-        </div>
 
-        <div className="relative inline float-right w-full h-full p-20 pr-60">
-          <PixelatedCanvas
-            src="/pfp/regular.JPG"
-            width={400}
-            height={550}
-            cellSize={3}
-            dotScale={0.9}
-            shape="square"
-            backgroundColor="#000000"
-            dropoutStrength={0.01}
-            interactive
-            distortionStrength={0.1}
-            distortionRadius={200}
-            distortionMode="repel"
-            followSpeed={0.2}
-            jitterStrength={4}
-            jitterSpeed={1}
-            sampleAverage
-            className="rounded-xl shadow-lg mt-10"
-          />
+          <div className="mx-auto w-full max-w-[340px] md:mx-0 md:w-[280px] md:justify-self-end lg:w-[340px]">
+            <ProfileCard
+              avatarUrl="/pfp/headshot.jpg"
+              name="Vineet Panchal"
+              title="Software Developer"
+              handle="vineet-panchal"
+              status="Toronto, ON"
+              contactText="Contact"
+              onContactClick={() => { window.location.href = contact.email.url; }}
+            />
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 } 
