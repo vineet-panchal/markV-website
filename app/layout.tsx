@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter_Tight, DM_Serif_Display } from "next/font/google";
+import { Geist, Geist_Mono, Inter_Tight, DM_Serif_Display, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,6 +24,11 @@ const dmSerifDisplay = DM_Serif_Display({
   style: "italic",
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Vineet Panchal",
   description: "My personal portfolio website.",
@@ -37,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${interTight.variable} ${dmSerifDisplay.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${interTight.variable} ${dmSerifDisplay.variable} ${spaceGrotesk.variable} antialiased`}
       >
         {children}
       </body>

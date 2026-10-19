@@ -6,7 +6,8 @@ import { ArrowUpRight } from 'lucide-react';
 import { SiChase, SiFreecodecamp, SiHackerrank } from 'react-icons/si';
 import Header from '../header';
 import { HoverEffect } from '../ui/card-hover-effect';
-import { SKILL_ICONS, type SkillIcon, type SkillName } from './skill-icons';
+import { type SkillName } from '@/components/skill-icons';
+import SkillChip from '@/components/skill-chip';
 import ibmLogo from "@/public/ibmCertification.png";
 
 const MicrosoftLogo = ({ className }: { className?: string }) => (
@@ -129,20 +130,6 @@ const certifications: Certification[] = [
     link: "https://www.freecodecamp.org/certification/vineetp/responsive-web-design",
   },
 ];
-
-function SkillChip({ skill }: { skill: SkillName }) {
-  const { logo, icon: Icon, color }: SkillIcon = SKILL_ICONS[skill];
-  return (
-    <li className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] py-1 pl-1.5 pr-2.5 text-xs text-zinc-300">
-      {Icon ? (
-        <Icon className="size-4 shrink-0" style={{ color }} aria-hidden />
-      ) : (
-        logo && <Image src={logo} alt="" className="size-4 shrink-0 object-contain" />
-      )}
-      {skill}
-    </li>
-  );
-}
 
 function CertificationCard({ title, issuer, issued, description, skills }: Certification) {
   const { name, accent, logo } = ISSUERS[issuer];

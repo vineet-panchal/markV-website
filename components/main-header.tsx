@@ -34,17 +34,16 @@ export default function MainHeader({subheading, heading, coloredText} : MainHead
           }} 
         />
 
-      <div className="font-[outfit] text-center text-5xl md:text-1xl font-bold pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b bg-white bg-clip-text leading-none tracking-tighter text-transparent">
-      
-        <div className="bg-white bg-clip-text text-center text-2xl font-extralight text-transparent font-sans letter-spacing-wide">
+      <div className="relative z-10 flex flex-col items-center gap-4 px-4 text-center pointer-events-none">
+        <p className="font-(family-name:--font-space-grotesk) text-lg font-light tracking-wide text-zinc-200 sm:text-xl">
           {subheading}
-        </div>
-        <span className="">  
-          {heading}
-          <span>
-            <AuroraText className="text-6xl italic font-[nyght-serif-dark]"> {coloredText} </AuroraText>
-          </span> 
-        </span>
+        </p>
+        <h1 className="font-(family-name:--font-inter-tight) text-5xl font-bold leading-none tracking-tighter text-white sm:text-6xl md:text-7xl">
+          {heading}{" "}
+          <AuroraText className="pr-2 text-[1.08em] font-(family-name:--font-dm-serif-display) font-normal italic tracking-normal">
+            {coloredText}
+          </AuroraText>
+        </h1>
       </div>
       </div>
     </>
