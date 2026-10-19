@@ -2,7 +2,7 @@ import React from 'react';
 import { BackgroundLines } from '../ui/background-lines';
 import SkillBadge from './skillBadge';
 import Header from '../header';
-import { SKILL_ICONS, type SkillIcon, type SkillName } from './skill-icons';
+import { SKILL_ICONS, type SkillIcon, type SkillName } from '@/components/skill-icons';
 
 const skillsList: SkillName[] = [
   "Java",

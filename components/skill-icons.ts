@@ -1,8 +1,8 @@
 import type { StaticImageData } from 'next/image';
 import type { IconType } from 'react-icons';
-import { SiApachekafka, SiDocker, SiDotnet, SiFastapi, SiGin, SiGo, SiJquery, SiKubernetes, SiRedux, SiSass, SiScikitlearn, SiSocketdotio, SiSpring, SiSpringboot, SiTensorflow } from 'react-icons/si';
+import { SiApachekafka, SiBitcoin, SiDocker, SiJsonwebtokens, SiOpenai, SiOwasp, SiDotnet, SiFastapi, SiGin, SiGo, SiJquery, SiKubernetes, SiRedux, SiSass, SiScikitlearn, SiSocketdotio, SiSpring, SiSpringboot, SiTensorflow } from 'react-icons/si';
 import { DiMsqlServer } from 'react-icons/di';
-import { TbAccessible, TbApi, TbSql, TbBinaryTree, TbBrandCSharp, TbChartHistogram, TbCloudLock, TbCube, TbLambda, TbLayoutGrid, TbPlugConnected, TbRoute, TbServer2 } from 'react-icons/tb';
+import { TbAccessible, TbApi, TbBrain, TbLock, TbShieldLock, TbSql, TbBinaryTree, TbBrandCSharp, TbChartHistogram, TbCloudLock, TbCube, TbLambda, TbLayoutGrid, TbPlugConnected, TbRoute, TbServer2 } from 'react-icons/tb';
 import { VscAzure } from 'react-icons/vsc';
 
 import javaLogo from "@/assets/logos/java.png";
@@ -44,7 +44,7 @@ export type SkillIcon = {
   color?: string;
 };
 
-// Every skill logo used on the about page, shared by the skills grid and the certification cards.
+// Every skill logo on the site, shared by the skills grid, certification cards and work timeline.
 export const SKILL_ICONS = {
   "Java": { logo: javaLogo },
   "Python": { logo: pythonLogo },
@@ -88,7 +88,7 @@ export const SKILL_ICONS = {
   "VS Code": { logo: vscodeLogo },
   "IntelliJ IDEA": { logo: intellijLogo },
 
-  // Only used on certification cards
+  // Only used on certification cards and the work timeline
   "Docker": { icon: SiDocker, color: "#2496ED" },
   "Kubernetes": { icon: SiKubernetes, color: "#326CE5" },
   "Virtualization": { icon: TbServer2, color: "#A1A1AA" },
@@ -106,6 +106,14 @@ export const SKILL_ICONS = {
   "Spring": { icon: SiSpring, color: "#6DB33F" },
   "REST APIs": { icon: TbApi, color: "#A1A1AA" },
   "SQL": { icon: TbSql, color: "#A1A1AA" },
+  "OpenAI": { icon: SiOpenai, color: "#FFFFFF" },
+  "Azure OpenAI": { icon: SiOpenai, color: "#0089D6" },
+  "JWT": { icon: SiJsonwebtokens, color: "#D63AFF" },
+  "Blockchain": { icon: SiBitcoin, color: "#F7931A" },
+  "Cryptography": { icon: TbLock, color: "#A1A1AA" },
+  "Application Security": { icon: TbShieldLock, color: "#60A5FA" },
+  "OWASP Top 10": { icon: SiOwasp, color: "#FFFFFF" },
+  "Machine Learning": { icon: TbBrain, color: "#ff2975" },
 } satisfies Record<string, SkillIcon>;
 
 export type SkillName = keyof typeof SKILL_ICONS;
