@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter_Tight, DM_Serif_Display, Space_Grotesk } from 
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { VIEW_MODE_SCRIPT } from "@/lib/view-mode-script";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${interTight.variable} ${dmSerifDisplay.variable} ${spaceGrotesk.variable} antialiased bg-[var(--color-midnight)]`}
       >
         <ThemeProvider>{children}</ThemeProvider>
+        {/* Vercel Web Analytics: cookie-free page views, only reported from Vercel deployments */}
+        <Analytics />
       </body>
     </html>
   );
