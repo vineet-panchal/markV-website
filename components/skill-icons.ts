@@ -41,7 +41,10 @@ import intellijLogo from "@/assets/logos/intellij.png";
 export type SkillIcon = {
   logo?: StaticImageData;
   icon?: IconType;
+  // Colours can be CSS variables so white icons flip to dark in the light theme
   color?: string;
+  // White image logos that need inverting on light backgrounds
+  invertOnLight?: boolean;
 };
 
 // Every skill logo on the site, shared by the skills grid, certification cards and work timeline.
@@ -65,8 +68,8 @@ export const SKILL_ICONS = {
   ".NET": { icon: SiDotnet, color: "#7B5BE6" },
   "Gin": { icon: SiGin, color: "#008ECF" },
   "FastAPI": { icon: SiFastapi, color: "#009688" },
-  "WebSockets": { icon: TbPlugConnected, color: "#E4E4E7" },
-  "Socket.IO": { icon: SiSocketdotio, color: "#FFFFFF" },
+  "WebSockets": { icon: TbPlugConnected, color: "var(--color-zinc-200)" },
+  "Socket.IO": { icon: SiSocketdotio, color: "var(--color-white)" },
   "MongoDB": { logo: mongodbLogo },
   "PostgreSQL": { logo: postgresqlLogo },
   "Supabase": { logo: supabaseLogo },
@@ -83,7 +86,7 @@ export const SKILL_ICONS = {
   "Bootstrap": { logo: bootstrapLogo },
   "Postman": { logo: postmanLogo },
   "Git": { logo: gitLogo },
-  "GitHub": { logo: githubLogo },
+  "GitHub": { logo: githubLogo, invertOnLight: true },
   "Sourcetree": { logo: sourcetreeLogo },
   "VS Code": { logo: vscodeLogo },
   "IntelliJ IDEA": { logo: intellijLogo },
@@ -102,21 +105,21 @@ export const SKILL_ICONS = {
   "Functional Programming": { icon: TbLambda, color: "#A1A1AA" },
   "Flexbox & Grid": { icon: TbLayoutGrid, color: "#A1A1AA" },
   "Accessibility": { icon: TbAccessible, color: "#A1A1AA" },
-  "Kafka": { icon: SiApachekafka, color: "#FFFFFF" },
+  "Kafka": { icon: SiApachekafka, color: "var(--color-white)" },
   "Spring": { icon: SiSpring, color: "#6DB33F" },
   "REST APIs": { icon: TbApi, color: "#A1A1AA" },
   "SQL": { icon: TbSql, color: "#A1A1AA" },
-  "OpenAI": { icon: SiOpenai, color: "#FFFFFF" },
+  "OpenAI": { icon: SiOpenai, color: "var(--color-white)" },
   "Azure OpenAI": { icon: SiOpenai, color: "#0089D6" },
   "JWT": { icon: SiJsonwebtokens, color: "#D63AFF" },
   "Blockchain": { icon: SiBitcoin, color: "#F7931A" },
   "Cryptography": { icon: TbLock, color: "#A1A1AA" },
   "Application Security": { icon: TbShieldLock, color: "#60A5FA" },
-  "OWASP Top 10": { icon: SiOwasp, color: "#FFFFFF" },
+  "OWASP Top 10": { icon: SiOwasp, color: "var(--color-white)" },
   "Machine Learning": { icon: TbBrain, color: "#ff2975" },
 
   // Only used on project cards and project pages
-  "Three.js": { icon: SiThreedotjs, color: "#FFFFFF" },
+  "Three.js": { icon: SiThreedotjs, color: "var(--color-white)" },
   "Globe.gl": { icon: TbWorld, color: "#38BDF8" },
   "satellite.js": { icon: TbSatellite, color: "#A1A1AA" },
   "NumPy": { icon: SiNumpy, color: "#4DABCF" },
@@ -127,7 +130,7 @@ export const SKILL_ICONS = {
   "Zustand": { icon: TbBox, color: "#A1A1AA" },
   "Recharts": { icon: TbChartLine, color: "#22B5BF" },
   "Material UI": { icon: SiMui, color: "#007FFF" },
-  "Vercel": { icon: SiVercel, color: "#FFFFFF" },
+  "Vercel": { icon: SiVercel, color: "var(--color-white)" },
   "Clerk": { icon: SiClerk, color: "#6C47FF" },
   "Google Auth": { icon: SiGoogle, color: "#4285F4" },
   "Pinecone": { icon: TbStack2, color: "#A1A1AA" },

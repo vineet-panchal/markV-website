@@ -10,13 +10,15 @@ import FeaturedProjectDisplay from './featuredProjectDisplay';
 import SkillChip from '@/components/skill-chip';
 import { projects } from '@/lib/projects';
 
-export default function FeaturedProjects() {
+// `limit` shows only the first few projects (quick view on the home page) with a link to the rest
+export default function FeaturedProjects({ limit }: { limit?: number }) {
+  const shown = limit ? projects.slice(0, limit) : projects;
   return (
     <div className="bg-[var(--color-midnight)] py-5 text-white">
       <Header heading="My Featured Projects" subHeading="Highlights from the" coloredText="lab." />
       <div className="relative w-full bg-[var(--color-midnight)] py-16 text-neutral-50">
         <div className="mx-auto flex max-w-6xl flex-col gap-20 px-4 sm:px-6">
-          {projects.map((project) => (
+          {shown.map((project) => (
             <motion.div
               key={project.slug}
               initial={{ opacity: 0, y: 24 }}
@@ -109,6 +111,19 @@ export default function FeaturedProjects() {
               </div>
             </motion.div>
           ))}
+          {limit && limit < projects.length && (
+            <div className="flex justify-center">
+              <Link
+                href="/projects"
+                className="group inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/[0.08] py-1.5 pl-5 pr-1.5 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md transition-all duration-300 hover:border-white/35 hover:bg-white/[0.14]"
+              >
+                View all {projects.length} projects
+                <span className="flex size-8 items-center justify-center rounded-full bg-white text-zinc-900 transition-transform duration-300 group-hover:translate-x-1">
+                  <ArrowRight className="size-4" />
+                </span>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

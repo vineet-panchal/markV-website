@@ -42,7 +42,7 @@ export function Tile({
       }}
       className={cn(
         "group/tile relative isolate flex flex-col overflow-hidden rounded-3xl border border-white/[0.08] p-6 [contain:layout_paint]",
-        "bg-gradient-to-b from-[#1f1f1f] to-[#151515] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_50px_-25px_rgba(0,0,0,0.7)]",
+        "bg-gradient-to-b from-[var(--surface-1)] to-[var(--surface-2)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_50px_-25px_rgba(0,0,0,0.7)]",
         className,
       )}
     >

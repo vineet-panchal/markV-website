@@ -4,6 +4,7 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is(.light *));
 
 html, body {
   margin: 0;
@@ -316,4 +317,157 @@ html, body {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 9999px;
   }
+}
+
+/* ---------- Light theme ----------
+   Dark is the default. Light mode flips the neutral palette (white <-> near-black,
+   each grey scale reversed) so every text-white, border-white/10, text-zinc-400...
+   utility inverts in one place. Brand and accent colours are untouched. */
+:root {
+  --surface-1: #1f1f1f;
+  --surface-2: #151515;
+  --surface-3: #141414;
+  --surface-4: #0f0f10;
+  --surface-raised: #323132;
+  --surface-raised-edge: #3d3c3d;
+}
+
+html.light {
+  color-scheme: light;
+  --midnight: #f5f5f3;
+  --bento-card: #ffffff;
+  --surface-1: #ffffff;
+  --surface-2: #f4f4f5;
+  --surface-3: #f1f1f2;
+  --surface-4: #fafafa;
+  --surface-raised: #ffffff;
+  --surface-raised-edge: #e4e4e7;
+  --color-white: #121214;
+  --color-black: #ffffff;
+  --color-zinc-50: oklch(14.1% 0.005 285.823);
+  --color-zinc-100: oklch(21% 0.006 285.885);
+  --color-zinc-200: oklch(27.4% 0.006 286.033);
+  --color-zinc-300: oklch(37% 0.013 285.805);
+  --color-zinc-400: oklch(44.2% 0.017 285.786);
+  --color-zinc-500: oklch(55.2% 0.016 285.938);
+  --color-zinc-600: oklch(70.5% 0.015 286.067);
+  --color-zinc-700: oklch(87.1% 0.006 286.286);
+  --color-zinc-800: oklch(92% 0.004 286.32);
+  --color-zinc-900: oklch(96.7% 0.001 286.375);
+  --color-zinc-950: oklch(98.5% 0 0);
+  --color-neutral-50: oklch(14.5% 0 0);
+  --color-neutral-100: oklch(20.5% 0 0);
+  --color-neutral-200: oklch(26.9% 0 0);
+  --color-neutral-300: oklch(37.1% 0 0);
+  --color-neutral-400: oklch(43.9% 0 0);
+  --color-neutral-500: oklch(55.6% 0 0);
+  --color-neutral-600: oklch(70.8% 0 0);
+  --color-neutral-700: oklch(87% 0 0);
+  --color-neutral-800: oklch(92.2% 0 0);
+  --color-neutral-900: oklch(97% 0 0);
+  --color-neutral-950: oklch(98.5% 0 0);
+  --color-slate-50: oklch(12.9% 0.042 264.695);
+  --color-slate-100: oklch(20.8% 0.042 265.755);
+  --color-slate-200: oklch(27.9% 0.041 260.031);
+  --color-slate-300: oklch(37.2% 0.044 257.287);
+  --color-slate-400: oklch(44.6% 0.043 257.281);
+  --color-slate-500: oklch(55.4% 0.046 257.417);
+  --color-slate-600: oklch(70.4% 0.04 256.788);
+  --color-slate-700: oklch(86.9% 0.022 252.894);
+  --color-slate-800: oklch(92.9% 0.013 255.508);
+  --color-slate-900: oklch(96.8% 0.007 247.896);
+  --color-slate-950: oklch(98.4% 0.003 247.858);
+  --color-gray-50: oklch(13% 0.028 261.692);
+  --color-gray-100: oklch(21% 0.034 264.665);
+  --color-gray-200: oklch(27.8% 0.033 256.848);
+  --color-gray-300: oklch(37.3% 0.034 259.733);
+  --color-gray-400: oklch(44.6% 0.03 256.802);
+  --color-gray-500: oklch(55.1% 0.027 264.364);
+  --color-gray-600: oklch(70.7% 0.022 261.325);
+  --color-gray-700: oklch(87.2% 0.01 258.338);
+  --color-gray-800: oklch(92.8% 0.006 264.531);
+  --color-gray-900: oklch(96.7% 0.003 264.542);
+  --color-gray-950: oklch(98.5% 0.002 247.839);
+  --color-stone-50: oklch(14.7% 0.004 49.25);
+  --color-stone-100: oklch(21.6% 0.006 56.043);
+  --color-stone-200: oklch(26.8% 0.007 34.298);
+  --color-stone-300: oklch(37.4% 0.01 67.558);
+  --color-stone-400: oklch(44.4% 0.011 73.639);
+  --color-stone-500: oklch(55.3% 0.013 58.071);
+  --color-stone-600: oklch(70.9% 0.01 56.259);
+  --color-stone-700: oklch(86.9% 0.005 56.366);
+  --color-stone-800: oklch(92.3% 0.003 48.717);
+  --color-stone-900: oklch(97% 0.001 106.424);
+  --color-stone-950: oklch(98.5% 0.001 106.423);
+}
+
+/* Sections that stay dark in both themes (blueprint sheets, terminal card) */
+html.light .force-dark {
+  color-scheme: dark;
+  --surface-1: #1f1f1f;
+  --surface-2: #151515;
+  --surface-3: #141414;
+  --surface-4: #0f0f10;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-zinc-50: oklch(98.5% 0 0);
+  --color-zinc-100: oklch(96.7% 0.001 286.375);
+  --color-zinc-200: oklch(92% 0.004 286.32);
+  --color-zinc-300: oklch(87.1% 0.006 286.286);
+  --color-zinc-400: oklch(70.5% 0.015 286.067);
+  --color-zinc-500: oklch(55.2% 0.016 285.938);
+  --color-zinc-600: oklch(44.2% 0.017 285.786);
+  --color-zinc-700: oklch(37% 0.013 285.805);
+  --color-zinc-800: oklch(27.4% 0.006 286.033);
+  --color-zinc-900: oklch(21% 0.006 285.885);
+  --color-zinc-950: oklch(14.1% 0.005 285.823);
+  --color-neutral-50: oklch(98.5% 0 0);
+  --color-neutral-100: oklch(97% 0 0);
+  --color-neutral-200: oklch(92.2% 0 0);
+  --color-neutral-300: oklch(87% 0 0);
+  --color-neutral-400: oklch(70.8% 0 0);
+  --color-neutral-500: oklch(55.6% 0 0);
+  --color-neutral-600: oklch(43.9% 0 0);
+  --color-neutral-700: oklch(37.1% 0 0);
+  --color-neutral-800: oklch(26.9% 0 0);
+  --color-neutral-900: oklch(20.5% 0 0);
+  --color-neutral-950: oklch(14.5% 0 0);
+  --color-slate-50: oklch(98.4% 0.003 247.858);
+  --color-slate-100: oklch(96.8% 0.007 247.896);
+  --color-slate-200: oklch(92.9% 0.013 255.508);
+  --color-slate-300: oklch(86.9% 0.022 252.894);
+  --color-slate-400: oklch(70.4% 0.04 256.788);
+  --color-slate-500: oklch(55.4% 0.046 257.417);
+  --color-slate-600: oklch(44.6% 0.043 257.281);
+  --color-slate-700: oklch(37.2% 0.044 257.287);
+  --color-slate-800: oklch(27.9% 0.041 260.031);
+  --color-slate-900: oklch(20.8% 0.042 265.755);
+  --color-slate-950: oklch(12.9% 0.042 264.695);
+  --color-gray-50: oklch(98.5% 0.002 247.839);
+  --color-gray-100: oklch(96.7% 0.003 264.542);
+  --color-gray-200: oklch(92.8% 0.006 264.531);
+  --color-gray-300: oklch(87.2% 0.01 258.338);
+  --color-gray-400: oklch(70.7% 0.022 261.325);
+  --color-gray-500: oklch(55.1% 0.027 264.364);
+  --color-gray-600: oklch(44.6% 0.03 256.802);
+  --color-gray-700: oklch(37.3% 0.034 259.733);
+  --color-gray-800: oklch(27.8% 0.033 256.848);
+  --color-gray-900: oklch(21% 0.034 264.665);
+  --color-gray-950: oklch(13% 0.028 261.692);
+  --color-stone-50: oklch(98.5% 0.001 106.423);
+  --color-stone-100: oklch(97% 0.001 106.424);
+  --color-stone-200: oklch(92.3% 0.003 48.717);
+  --color-stone-300: oklch(86.9% 0.005 56.366);
+  --color-stone-400: oklch(70.9% 0.01 56.259);
+  --color-stone-500: oklch(55.3% 0.013 58.071);
+  --color-stone-600: oklch(44.4% 0.011 73.639);
+  --color-stone-700: oklch(37.4% 0.01 67.558);
+  --color-stone-800: oklch(26.8% 0.007 34.298);
+  --color-stone-900: oklch(21.6% 0.006 56.043);
+  --color-stone-950: oklch(14.7% 0.004 49.25);
+}
+
+/* Quick view (default home). Hidden before hydration for visitors who chose the full site */
+html[data-view="full"] .quick-only {
+  display: none;
 }

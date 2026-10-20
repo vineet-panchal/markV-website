@@ -174,7 +174,7 @@ const PlaceholderShot = ({ product, compact }: { product: Product; compact?: boo
     <div
       className="absolute inset-0 flex flex-col overflow-hidden rounded-xl border border-white/10"
       // A gradient glow instead of a blurred element keeps the card cheap to repaint while it moves
-      style={{ background: `radial-gradient(circle at 90% 25%, ${color}40, transparent 55%), linear-gradient(to bottom, #1f1f1f, #141414)` }}
+      style={{ background: `radial-gradient(circle at 90% 25%, ${color}40, transparent 55%), linear-gradient(to bottom, var(--surface-1), var(--surface-3))` }}
     >
       <div className="flex items-center gap-1.5 border-b border-white/10 px-4 py-3">
         <span className="size-2.5 rounded-full bg-[#ff5f57]" />

@@ -46,7 +46,7 @@ function Card({ className, children }: { className?: string; children: React.Rea
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-b from-[#1f1f1f] to-[#151515] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_50px_-25px_rgba(0,0,0,0.7)] transition-colors duration-300 hover:border-white/[0.16]",
+        "group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-b from-[var(--surface-1)] to-[var(--surface-2)] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_50px_-25px_rgba(0,0,0,0.7)] transition-colors duration-300 hover:border-white/[0.16]",
         className,
       )}
     >
@@ -56,15 +56,15 @@ function Card({ className, children }: { className?: string; children: React.Rea
 }
 
 function SkillLogo({ skill, className = "size-5" }: { skill: SkillName; className?: string }) {
-  const { logo, icon: Icon, color }: SkillIcon = SKILL_ICONS[skill];
+  const { logo, icon: Icon, color, invertOnLight }: SkillIcon = SKILL_ICONS[skill];
   if (Icon) return <Icon className={className} style={{ color }} aria-hidden />;
-  return logo ? <Image src={logo} alt="" className={cn(className, "object-contain")} /> : null;
+  return logo ? <Image src={logo} alt="" className={cn(className, "object-contain", invertOnLight && "light:invert")} /> : null;
 }
 
 function BrowserFrame({ project }: { project: Project }) {
   if (!project.image) return <ScreenPlaceholder title={project.title} className="w-full" />;
   return (
-    <div className="overflow-hidden rounded-2xl border border-white/15 bg-[#141414] shadow-2xl">
+    <div className="overflow-hidden rounded-2xl border border-white/15 bg-[var(--surface-3)] shadow-2xl">
       <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-2">
         <span className="size-2.5 rounded-full bg-[#ff5f57]" />
         <span className="size-2.5 rounded-full bg-[#febc2e]" />
@@ -311,7 +311,7 @@ function Architecture({ project }: { project: Project }) {
               {layer.nodes.map((node) => (
                 <div
                   key={node.name}
-                  className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-gradient-to-b from-[#1f1f1f] to-[#171717] p-4"
+                  className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-gradient-to-b from-[var(--surface-1)] to-[var(--surface-2)] p-4"
                 >
                   <div className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04]">
                     {node.skill ? <SkillLogo skill={node.skill} /> : <span className="size-2 rounded-full bg-[var(--accent)]" />}
@@ -354,7 +354,7 @@ function Stack({ project }: { project: Project }) {
         </motion.div>
 
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.1 }}>
-          <div className="h-full overflow-hidden rounded-3xl border border-white/[0.08] bg-[#0f0f10] shadow-[0_20px_50px_-25px_rgba(0,0,0,0.7)]">
+          <div className="force-dark h-full overflow-hidden rounded-3xl border border-white/[0.08] bg-[#0f0f10] shadow-[0_20px_50px_-25px_rgba(0,0,0,0.7)]">
             <div className="flex items-center gap-2 border-b border-white/[0.06] px-4 py-3">
               <Terminal className="size-3.5 text-zinc-500" />
               <span className="font-(family-name:--font-geist-mono) text-[11px] text-zinc-500">~/{project.slug}</span>
