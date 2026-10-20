@@ -1,162 +1,116 @@
 "use client";
 
 import React from 'react';
-import Header from '../header';
-
-import { Badge } from "@/components/ui/badge";
+import Link from 'next/link';
 import { motion } from "framer-motion";
+import { ArrowRight, ExternalLink } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
+import Header from '../header';
 import FeaturedProjectDisplay from './featuredProjectDisplay';
-import FashionDisasterAvoiderImg from '../../assets/featured-projects/fashion.png';
-import RateMyProfessorImg from '../../assets/featured-projects/rate-my-professor.png';
-import SmartdeckImg from '../../assets/featured-projects/smartdeck.png';
-import TeachForCambodiaImg from '../../assets/featured-projects/tfc.png';
-import AStarPathfinderImg from '../../assets/featured-projects/astar.png';
-
-import type { StaticImageData } from "next/image";
-
-type Project = {
-  title: string
-  description: string
-  points?: string[]
-  tags?: string[]
-  color: string
-  image?: string | StaticImageData
-  header: string
-};
-
-const projectsData: Project[] = [
-  {
-    title: "Teach For Cambodia",
-    description:
-      "Teaching platform for Teach For Cambodia, a startup non-profit, that works to increase educational opportunities for children in the country.",
-    points: [
-      "Developed a teaching platform for Teach For Cambodia, improving remote education accessibility and enabling seamless communication between students, instructors, & admin with Supabase and Google Authentication.", 
-      "Implemented a course management system with real-time updates, enabling educators to seamlessly create, edit, and organize lessons for students. Added dynamic search for easy course navigation.", 
-      
-    ],
-    tags: ["Next.js", "React", "Supabase", "TypeScript", "Material UI", "Vercel"],
-    color: "bg-pink-500",
-    image: TeachForCambodiaImg,
-    header: "Empowering classrooms through code."
-  },
-  {
-    title: "SmartDeck",
-    description:
-      "An AI-powered tool that generates flashcards on text input.",
-    points: [
-      "Created a web app that generates flashcards for educational use, enhancing learning experiences through personalized AI-driven content, using OpenAI’s API.", 
-      "Integrated Clerk for user authentication, Firebase for data storage, and Material UI for enhanced user experience.", 
-  
-    ],
-    tags: ["React", "Next.js", "Firebase", "OpenAI", "Material UI", "Clerk"],
-    color: "bg-blue-500",
-    image: SmartdeckImg,
-    header: "Flashcards that actually think smarter."
-  },
-  {
-    title: "Fashion Disaster Avoider",
-    description:
-      "Fashion Disaster Avoider, a platform that is a brutally honest fashion-savvy friend who helps you avoid style mishaps.",
-    points: [
-      "Developed an AI-powered chatbot that provides real-time, fashion advice, helping users refine their style choices.", 
-      "Integrated OpenAI’s API to analyze outfit combinations and trends, delivering instant, personalized recommendations."
-    
-    ],
-    tags: ["Next.js", "React", "Material UI", "OpenAI", "TypeScript"],
-    color: "bg-green-500",
-    image: FashionDisasterAvoiderImg,
-    header: "Your virtual stylist in disguise."
-  },
-  {
-    title: "Rate My Professor",
-    description:
-      "A chatbot that you can communicate with to rate your professors.",
-    points: [
-      "Built a comprehensive AI-powered assistant using Retrieval Augmented Generation (RAG), enabling students to receive real-time, detailed feedback on professors and courses by integrating external knowledge bases.", 
-      "Streamlined user experience by integrating a vector database with a large language model for accurate responses."
-    ],
-    tags: ["Next.js", "React", "Pincone", "Material UI"],
-    color: "bg-yellow-500",
-    image: RateMyProfessorImg,
-    header: "Student voices, amplified with AI."
-  },
-  {
-    title: "A-Star Pathfinding Visualizer",
-    description:
-      "An introduction to data structures and algorithms in python. Created a visualizer for the A-Star algorithm using pygame.",
-    points: ["asdf", "asdf", "asdf"],
-    tags: ["Python", "Pygame"],
-    color: "bg-purple-500",
-    image: AStarPathfinderImg,
-    header: "Watch algorithms find their way."
-  }
-];
+import SkillChip from '@/components/skill-chip';
+import { projects } from '@/lib/projects';
 
 export default function FeaturedProjects() {
   return (
-    <>
-      <div className="bg-[var(--color-midnight)] text-white py-5">
-        <Header heading="My Featured Projects" subHeading="Highlights from the" coloredText="lab." />
-          <div className="relative w-full bg-[var(--color-midnight)] py-16 text-neutral-50">
-            <div className="mx-auto flex max-w-5xl flex-col space-y-16 px-6">
-              {projectsData.map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.15 }}
-                  className="grid grid-cols-12 gap-6"
-                >
-                  {/* Left side - Project Showcase */}
-                  <div className="relative col-span-7 ">
-                    <FeaturedProjectDisplay bgColor={item.color} displayImg={item.image} header={item.header} />
-                  </div>
+    <div className="bg-[var(--color-midnight)] py-5 text-white">
+      <Header heading="My Featured Projects" subHeading="Highlights from the" coloredText="lab." />
+      <div className="relative w-full bg-[var(--color-midnight)] py-16 text-neutral-50">
+        <div className="mx-auto flex max-w-6xl flex-col gap-20 px-4 sm:px-6">
+          {projects.map((project) => (
+            <motion.div
+              key={project.slug}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-12"
+            >
+              {/* Left side - project showcase */}
+              <Link href={`/projects/${project.slug}`} className="relative block lg:col-span-7" aria-label={`Open ${project.title}`}>
+                <FeaturedProjectDisplay
+                  bgColor={project.color}
+                  displayImg={project.image}
+                  header={project.header}
+                  title={project.title}
+                />
+              </Link>
 
-                  {/* Right side - Sticky Information */}
-                  <div className="relative col-span-5">
-                    <div className="sticky top-24">
-                        <span className="text-sm font-medium text-neutral-400">
-
-                        <div className="relative col-span-3 space-y-6">
-                          {/* Title with dash */}
-                          <div className="flex items-center gap-3">
-                            <span className={`h-1 w-6 rounded-full ${item.color}`} />
-                            <h2 className="text-xl font-bold">{item.title}</h2>
-                          </div>
-
-                          <p className="text-sm text-neutral-400">
-                            {item.description}
-                          </p>
-
-                          <ul className="space-y-3">
-                              {item.points?.map((point, i) => (
-                                <li key={i} className="flex items-start gap-3">
-                                  <span className={`text-${item.color.split('-')[1]}-500`}>-</span>
-                                  <span>{point}</span>
-                                </li>
-                            ))}
-                          </ul>
-
-                          {/* Example stack badges */}
-                          <div className="mt-4 flex flex-wrap gap-2">
-                            {item.tags?.map((tag, i) => (
-                              <div key={i} className="mt-4 flex flex-wrap gap-2">
-                                <Badge className="bg-neutral-800 text-neutral-200">{tag}</Badge>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-
-                      </span>
+              {/* Right side - sticky information */}
+              <div className="relative lg:col-span-5">
+                <div className="flex flex-col gap-5 lg:sticky lg:top-24">
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <span className="h-1 w-6 rounded-full" style={{ backgroundColor: project.accent }} />
+                      <h2 className="font-(family-name:--font-inter-tight) text-2xl font-bold tracking-tight">{project.title}</h2>
                     </div>
+                    <p className="mt-2 font-(family-name:--font-geist-mono) text-[11px] text-zinc-500">
+                      {"// "}
+                      {project.year} · {project.context.toLowerCase()}
+                    </p>
                   </div>
-          
-                </motion.div>
-              ))}
-            </div>
-          </div>
+
+                  <p className="text-sm leading-relaxed text-neutral-400">{project.description}</p>
+
+                  <ul className="space-y-3">
+                    {project.points.map((point) => (
+                      <li key={point} className="flex items-start gap-3 text-sm leading-relaxed text-neutral-300">
+                        <span
+                          className="mt-[0.55rem] size-1.5 shrink-0 rounded-full"
+                          style={{ backgroundColor: project.accent, boxShadow: `0 0 8px ${project.accent}` }}
+                          aria-hidden
+                        />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ul className="flex flex-wrap gap-2" aria-label="Technologies">
+                    {project.skills.map((skill) => (
+                      <SkillChip key={skill} skill={skill} />
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap items-center gap-2 pt-1">
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="group inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/[0.08] py-1.5 pl-5 pr-1.5 text-sm font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md transition-all duration-300 hover:border-white/35 hover:bg-white/[0.14]"
+                    >
+                      View project
+                      <span className="flex size-8 items-center justify-center rounded-full bg-white text-zinc-900 transition-transform duration-300 group-hover:translate-x-1">
+                        <ArrowRight className="size-4" />
+                      </span>
+                    </Link>
+                    {project.repo && (
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${project.title} on GitHub`}
+                        title="Source code"
+                        className="flex size-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.05] text-zinc-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/[0.1]"
+                      >
+                        <FaGithub className="size-4" />
+                      </a>
+                    )}
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${project.title} live site`}
+                        title="Live site"
+                        className="flex size-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.05] text-zinc-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/[0.1]"
+                      >
+                        <ExternalLink className="size-4" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 };

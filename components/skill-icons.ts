@@ -1,8 +1,8 @@
 import type { StaticImageData } from 'next/image';
 import type { IconType } from 'react-icons';
-import { SiApachekafka, SiBitcoin, SiDocker, SiJsonwebtokens, SiOpenai, SiOwasp, SiDotnet, SiFastapi, SiGin, SiGo, SiJquery, SiKubernetes, SiRedux, SiSass, SiScikitlearn, SiSocketdotio, SiSpring, SiSpringboot, SiTensorflow } from 'react-icons/si';
+import { SiApachekafka, SiApachemaven, SiBitcoin, SiClerk, SiDocker, SiGoogle, SiJsonwebtokens, SiMui, SiNumpy, SiOpenai, SiOwasp, SiPydantic, SiThreedotjs, SiVercel, SiDotnet, SiFastapi, SiGin, SiGo, SiJquery, SiKubernetes, SiRedux, SiSass, SiScikitlearn, SiSocketdotio, SiSpring, SiSpringboot, SiTensorflow } from 'react-icons/si';
 import { DiMsqlServer } from 'react-icons/di';
-import { TbAccessible, TbApi, TbBrain, TbLock, TbShieldLock, TbSql, TbBinaryTree, TbBrandCSharp, TbChartHistogram, TbCloudLock, TbCube, TbLambda, TbLayoutGrid, TbPlugConnected, TbRoute, TbServer2 } from 'react-icons/tb';
+import { TbAccessible, TbApi, TbBox, TbBrain, TbChartLine, TbDatabase, TbDeviceGamepad2, TbLock, TbRobot, TbSatellite, TbShieldLock, TbSql, TbStack2, TbWorld, TbBinaryTree, TbBrandCSharp, TbChartHistogram, TbCloudLock, TbCube, TbLambda, TbLayoutGrid, TbPlugConnected, TbRoute, TbServer2 } from 'react-icons/tb';
 import { VscAzure } from 'react-icons/vsc';
 
 import javaLogo from "@/assets/logos/java.png";
@@ -114,6 +114,25 @@ export const SKILL_ICONS = {
   "Application Security": { icon: TbShieldLock, color: "#60A5FA" },
   "OWASP Top 10": { icon: SiOwasp, color: "#FFFFFF" },
   "Machine Learning": { icon: TbBrain, color: "#ff2975" },
+
+  // Only used on project cards and project pages
+  "Three.js": { icon: SiThreedotjs, color: "#FFFFFF" },
+  "Globe.gl": { icon: TbWorld, color: "#38BDF8" },
+  "satellite.js": { icon: TbSatellite, color: "#A1A1AA" },
+  "NumPy": { icon: SiNumpy, color: "#4DABCF" },
+  "Pydantic": { icon: SiPydantic, color: "#E92063" },
+  "Spring Data JPA": { icon: SiSpring, color: "#6DB33F" },
+  "H2": { icon: TbDatabase, color: "#1E88E5" },
+  "Maven": { icon: SiApachemaven, color: "#C71A36" },
+  "Zustand": { icon: TbBox, color: "#A1A1AA" },
+  "Recharts": { icon: TbChartLine, color: "#22B5BF" },
+  "Material UI": { icon: SiMui, color: "#007FFF" },
+  "Vercel": { icon: SiVercel, color: "#FFFFFF" },
+  "Clerk": { icon: SiClerk, color: "#6C47FF" },
+  "Google Auth": { icon: SiGoogle, color: "#4285F4" },
+  "Pinecone": { icon: TbStack2, color: "#A1A1AA" },
+  "RAG": { icon: TbRobot, color: "#A1A1AA" },
+  "Pygame": { icon: TbDeviceGamepad2, color: "#FFD43B" },
 } satisfies Record<string, SkillIcon>;
 
 export type SkillName = keyof typeof SKILL_ICONS;
