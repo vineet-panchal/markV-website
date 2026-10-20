@@ -6,13 +6,14 @@ interface SkillBadgeProps {
   logo?: string;
   icon?: IconType;
   color?: string;
+  invertOnLight?: boolean;
 }
 
-export default function SkillBadge({ logo, icon: Icon, color, skill }: SkillBadgeProps) {
+export default function SkillBadge({ logo, icon: Icon, color, invertOnLight, skill }: SkillBadgeProps) {
   return (
     <>
-      <div className="relative drop-shadow-xl w-full h-[3rem] overflow-hidden rounded-xl bg-[#3d3c3d]">
-        <div className="absolute flex items-center justify-center px-2 text-white z-[1] opacity-90 rounded-xl inset-0.5 bg-[#323132]">
+      <div className="relative drop-shadow-xl w-full h-[3rem] overflow-hidden rounded-xl bg-[var(--surface-raised-edge)]">
+        <div className="absolute flex items-center justify-center px-2 text-white z-[1] opacity-90 rounded-xl inset-0.5 bg-[var(--surface-raised)]">
           <div className="flex items-center justify-center">
             {Icon ? (
               <Icon className="size-6 shrink-0 sm:size-8" style={{ color }} aria-hidden />
@@ -20,7 +21,7 @@ export default function SkillBadge({ logo, icon: Icon, color, skill }: SkillBadg
               <img 
                 src={logo} 
                 alt={`${skill} logo`} 
-                className="size-6 shrink-0 object-contain sm:size-8"
+                className={`size-6 shrink-0 object-contain sm:size-8 ${invertOnLight ? "light:invert" : ""}`}
               />
             )}
           </div>

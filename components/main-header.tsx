@@ -15,7 +15,7 @@ export default function MainHeader({subheading, heading, coloredText} : MainHead
         <Image
           src="/assets/experience.jpg"
           alt="clouds"
-          className="inset-0 object-cover z-0 opacity-100"
+          className="inset-0 z-0 object-cover opacity-100 light:opacity-45 light:[filter:invert(1)_grayscale(1)_brightness(1.2)_contrast(0.85)]"
           fill
           priority
         />

@@ -61,13 +61,14 @@ export default function Skills() {
           
           <div className="relative z-10 mt-10 grid w-full max-w-6xl grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-6 lg:gap-6">
             {skillsList.map((skill) => {
-              const { logo, icon, color }: SkillIcon = SKILL_ICONS[skill];
+              const { logo, icon, color, invertOnLight }: SkillIcon = SKILL_ICONS[skill];
               return (
                 <SkillBadge 
                   key={skill} 
                   logo={logo?.src} 
                   icon={icon}
                   color={color}
+                  invertOnLight={invertOnLight}
                   skill={skill} 
                 />
               );

@@ -129,7 +129,7 @@ export default function ScorecardTile({ className }: { className?: string }) {
         <div className="flex flex-col gap-5">
           <div className="flex items-center gap-4">
             <div className="relative flex size-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#8c1eff] via-[#ff2975] to-[#ffd319] p-px">
-              <div className="flex size-full items-center justify-center rounded-[15px] bg-[#181818]">
+              <div className="flex size-full items-center justify-center rounded-[15px] bg-[var(--surface-1)]">
                 <span className="font-(family-name:--font-dm-serif-display) text-5xl italic text-white">{SCORE.grade}</span>
               </div>
             </div>

@@ -111,7 +111,7 @@ function Sheet({ blueprint, index }: { blueprint: Blueprint; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: (index % 2) * 0.1 }}
-      className="group relative overflow-hidden rounded-2xl border border-blue-400/25 bg-[#0a1630] p-5 shadow-[0_30px_60px_-30px_rgba(37,99,235,0.45)] sm:p-7"
+      className="force-dark group relative overflow-hidden rounded-2xl border border-blue-400/25 bg-[#0a1630] p-5 shadow-[0_30px_60px_-30px_rgba(37,99,235,0.45)] sm:p-7"
     >
       {/* blueprint paper: fine grid plus a heavier grid every five squares */}
       <div

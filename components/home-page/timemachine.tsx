@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Spline from "@splinetool/react-spline";
+import { useTheme } from "next-themes";
 import type { Application } from "@splinetool/runtime";
 import { AnimatePresence, animate, motion } from "motion/react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, RotateCcw, Zap } from "lucide-react";
@@ -107,11 +108,16 @@ type SplinePipeline = {
   updatePostprocessing?: (state: Record<string, unknown>) => void;
 };
 
+// The scene background matches the page (dark or light theme) so the masked stage blends in
+function pageBackground() {
+  return getComputedStyle(document.documentElement).getPropertyValue("--midnight").trim() || "#282828";
+}
+
 // Strip the Spline scene down to just the DeLorean: hide its dusty ground (the Torus)
 // and particle emitters. The background is the page colour rather than transparent,
 // which keeps the car's edges clean; the stage mask fades it into a soft oval.
 function isolateCar(app: Application) {
-  app.setBackgroundColor("#282828");
+  app.setBackgroundColor(pageBackground());
   for (const obj of app.getAllObjects()) {
     if (obj.name === "Torus" || obj.name.startsWith("Particle Emitter")) obj.visible = false;
   }
@@ -168,6 +174,14 @@ export default function TimeMachine() {
 
   useEffect(() => setPresent(toCircuitDate(new Date())), []);
 
+  // Repaint the 3D scene's background when the theme flips
+  const { resolvedTheme } = useTheme();
+  useEffect(() => {
+    // Wait a frame so the new theme's CSS variables are applied
+    const id = requestAnimationFrame(() => splineRef.current?.setBackgroundColor(pageBackground()));
+    return () => cancelAnimationFrame(id);
+  }, [resolvedTheme]);
+
   // to = era index, or null for the present day
   const travel = (to: number | null) => {
     if (phase === "traveling") return;
@@ -191,7 +205,7 @@ export default function TimeMachine() {
     <section className="relative mt-20 overflow-hidden py-20">
       <Starfield
         warp={warp}
-        className="pointer-events-none absolute inset-0 size-full [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]"
+        className="pointer-events-none absolute inset-0 size-full [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)] light:[filter:invert(1)_hue-rotate(180deg)]"
       />
 
       <div className="relative z-10 text-center">

@@ -134,7 +134,7 @@ const certifications: Certification[] = [
 function CertificationCard({ title, issuer, issued, description, skills }: Certification) {
   const { name, accent, logo } = ISSUERS[issuer];
   return (
-    <article className="relative z-20 flex h-full flex-col gap-5 overflow-hidden rounded-2xl border border-white/10 bg-[#1c1c1e] p-6 transition-colors duration-300 group-hover:border-white/20">
+    <article className="relative z-20 flex h-full flex-col gap-5 overflow-hidden rounded-2xl border border-white/10 bg-[var(--surface-1)] p-6 transition-colors duration-300 group-hover:border-white/20">
       <div
         aria-hidden
         className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full opacity-20 blur-3xl transition-opacity duration-300 group-hover:opacity-35"
@@ -142,7 +142,7 @@ function CertificationCard({ title, issuer, issued, description, skills }: Certi
       />
 
       <div className="relative flex items-center gap-3">
-        <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-[inset_0_-1px_0_rgba(0,0,0,0.08)]">
+        <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#fff] shadow-[inset_0_-1px_0_rgba(0,0,0,0.08)] ring-1 ring-[rgba(0,0,0,0.06)]">
           {logo}
         </div>
         <div className="min-w-0 flex-1">

@@ -30,7 +30,7 @@ export default function GlobeTile({ className }: { className?: string }) {
         <p className="mt-1 text-sm text-zinc-400">across {COUNTRIES.length} countries, and counting.</p>
       </div>
       <Globe config={DARK_GLOBE} className="top-24 left-1/2 w-[130%] max-w-none -translate-x-1/2" />
-      <div className="pointer-events-none absolute -inset-x-6 -bottom-6 h-20 bg-gradient-to-t from-[#151515] to-transparent" />
+      <div className="pointer-events-none absolute -inset-x-6 -bottom-6 h-20 bg-gradient-to-t from-[var(--surface-2)] to-transparent" />
     </Tile>
   );
 }

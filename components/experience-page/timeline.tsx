@@ -132,7 +132,7 @@ const initials = (name: string) =>
 function CompanyLogo({ role }: { role: Role }) {
   if (role.logo) {
     return (
-      <div className="relative size-12 shrink-0 overflow-hidden rounded-xl bg-white">
+      <div className="relative size-12 shrink-0 overflow-hidden rounded-xl bg-[#fff] ring-1 ring-[rgba(0,0,0,0.06)]">
         <Image
           src={role.logo}
           alt={`${role.company} logo`}
@@ -156,7 +156,7 @@ function CompanyLogo({ role }: { role: Role }) {
 
 function RoleCard({ role }: { role: Role }) {
   return (
-    <article className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-[#1f1f1f] to-[#151515] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_50px_-25px_rgba(0,0,0,0.7)] transition-colors duration-300 hover:border-white/20 sm:p-6">
+    <article className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-[var(--surface-1)] to-[var(--surface-2)] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_50px_-25px_rgba(0,0,0,0.7)] transition-colors duration-300 hover:border-white/20 sm:p-6">
       <div
         aria-hidden
         className="pointer-events-none absolute -right-20 -top-20 size-56 rounded-full opacity-15 blur-3xl transition-opacity duration-300 group-hover:opacity-30"

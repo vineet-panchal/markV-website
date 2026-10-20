@@ -110,7 +110,7 @@ function Wordmark() {
       >
         VINEET PANCHAL
       </p>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#1a1a1a] to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[var(--surface-1)] to-transparent" />
     </div>
   );
 }
@@ -118,7 +118,7 @@ function Wordmark() {
 export default function Footer() {
   return (
     <footer className="px-4 pb-6 pt-16">
-      <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/[0.08] bg-[#1a1a1a] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/[0.08] bg-[var(--surface-1)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
         {/* Call to action */}
         <div className="relative flex flex-col items-start justify-between gap-6 border-b border-white/[0.06] p-8 md:flex-row md:items-end md:p-10">
           <div aria-hidden className="absolute -left-20 -top-24 size-80 rounded-full bg-[#8c1eff]/15 blur-3xl" />

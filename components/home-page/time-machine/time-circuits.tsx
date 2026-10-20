@@ -68,7 +68,7 @@ export default function TimeCircuits({
   traveling?: boolean;
 }) {
   return (
-    <div className="relative w-full max-w-xl rounded-2xl border border-white/10 bg-[linear-gradient(180deg,#2c2c31_0%,#1c1c20_45%,#141417_100%)] p-1.5 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.12)]">
+    <div className="force-dark relative w-full max-w-xl rounded-2xl border border-white/10 bg-[linear-gradient(180deg,#2c2c31_0%,#1c1c20_45%,#141417_100%)] p-1.5 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.12)]">
       <Screw className="left-2.5 top-2.5" />
       <Screw className="right-2.5 top-2.5" />
       <Screw className="bottom-2.5 left-2.5" />

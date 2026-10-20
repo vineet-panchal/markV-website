@@ -13,7 +13,7 @@ interface FeaturedProjectDisplayProps {
 // Stand-in browser window for projects that don't have screenshots yet
 export function ScreenPlaceholder({ title, className = "" }: { title: string; className?: string }) {
   return (
-    <div className={`overflow-hidden rounded-xl border border-white/15 bg-[#141414] shadow-2xl ${className}`}>
+    <div className={`overflow-hidden rounded-xl border border-white/15 bg-[var(--surface-3)] shadow-2xl ${className}`}>
       <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-2">
         <span className="size-2.5 rounded-full bg-[#ff5f57]" />
         <span className="size-2.5 rounded-full bg-[#febc2e]" />

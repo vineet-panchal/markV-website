@@ -7,15 +7,15 @@ import { ArrowRight } from "lucide-react";
 export default function Introduction() {
   return (
     <>
-      <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden bg-midnight p-8">
+      <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden bg-midnight px-4 py-8 sm:p-8">
         
-        <div className="relative flex h-[80vh] w-full flex-col gap-5 items-center justify-center overflow-hidden bg-midnight p-8">
-          <span className="text-center font-(family-name:--font-geist-mono) text-lg font-medium tracking-tight text-zinc-300">
+        <div className="relative flex h-[80vh] w-full flex-col gap-5 items-center justify-center overflow-hidden bg-midnight px-0 py-8 sm:p-8">
+          <span className="text-center font-(family-name:--font-geist-mono) text-sm font-medium tracking-tight text-zinc-300 sm:text-lg">
             Hello, my name is Vineet Panchal, a software developer.
           </span>
           
           <div className="max-w-4xl mx-auto text-center">
-            <span className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b bg-white bg-clip-text text-center font-(family-name:--font-inter-tight) text-7xl font-bold leading-none tracking-tighter text-transparent">
+            <span className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b bg-white bg-clip-text text-center font-(family-name:--font-inter-tight) text-[2.6rem] font-bold leading-none sm:text-6xl md:text-7xl tracking-tighter text-transparent">
               I code for fun... and sometimes it turns into 
               <span className="bg-gradient-to-r from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-transparent"> something useful.</span>
             </span>
