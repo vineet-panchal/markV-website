@@ -291,3 +291,29 @@ html, body {
 .fade-grid-square:nth-child(n+20) {
   opacity: 0.1;
 }
+/* Code library scroller (projects page, below 1024px): no scrollbar on touch
+   devices, a slim visible one for mouse and trackpad users who can't swipe */
+.library-scroller {
+  scrollbar-width: none;
+}
+.library-scroller::-webkit-scrollbar {
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .library-scroller {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.06);
+  }
+  .library-scroller::-webkit-scrollbar {
+    display: block;
+    height: 6px;
+  }
+  .library-scroller::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 9999px;
+  }
+  .library-scroller::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 9999px;
+  }
+}
